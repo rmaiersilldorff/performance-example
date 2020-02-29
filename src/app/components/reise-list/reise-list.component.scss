@@ -1,0 +1,11 @@
+:host {
+  flex: 1 1 auto;
+}
+
+.reise-container {
+  display: flex;
+
+  app-reise-card {
+    margin-right: 1rem;
+  }
+}
