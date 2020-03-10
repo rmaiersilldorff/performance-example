@@ -3,6 +3,8 @@ import {ReiseService} from '../../services/reise.service';
 import {ReiseListComponent} from '../../components/reise-list/reise-list.component';
 import {first} from 'rxjs/operators';
 import {Reise} from '../../models/common';
+import {MatDialog} from '@angular/material/dialog';
+import {QuestionDialogComponent} from '../../components/question-dialog/question-dialog.component';
 
 @Component({
   selector: 'app-angebot-page',
@@ -16,7 +18,8 @@ export class AngebotPageComponent implements OnInit {
   angebote: Reise[];
 
   constructor(private reiseService: ReiseService,
-              private resolver: ComponentFactoryResolver) {
+              private resolver: ComponentFactoryResolver,
+              private dialog: MatDialog) {
     this.reiseService.getAngebote().pipe(first())
       .subscribe((angebote) => {
         this.angebote = angebote;
@@ -25,6 +28,22 @@ export class AngebotPageComponent implements OnInit {
 
   ngOnInit() {
     this.loadComponent();
+  }
+
+  async openDialog() {
+    const {QuestionDialogComponent} = await import('../../components/question-dialog/question-dialog.component');
+    const dialogRef = this.dialog.open(QuestionDialogComponent, {
+      autoFocus: false,
+      width: '25rem',
+    });
+
+    dialogRef.componentInstance.title = 'Löschen';
+    dialogRef.componentInstance.message = 'Wollen Sie die Daten wirklich löschen';
+    dialogRef.componentInstance.close.pipe(first())
+      .subscribe((value) => {
+        console.log(value);
+        this.dialog.closeAll();
+      });
   }
 
   async loadComponent() {
