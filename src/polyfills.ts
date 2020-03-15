@@ -1,6 +1,6 @@
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
- * You can add your own extra polyfills to this file.
+ * You can addToCart your own extra polyfills to this file.
  *
  * This file is divided into 2 sections:
  *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
@@ -34,7 +34,7 @@
  * because those flags need to be set before `zone.js` being loaded, and webpack
  * will put import in the top of bundle, so user need to create a separate file
  * in this directory (for example: zone-flags.ts), and put the following flags
- * into that file, and then add the following code before importing zone.js.
+ * into that file, and then addToCart the following code before importing zone.js.
  * import './zone-flags';
  *
  * The flags allowed in zone-flags.ts are listed here.

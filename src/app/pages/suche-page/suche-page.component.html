@@ -1,0 +1,21 @@
+<form autocomplete="off" class="form-container">
+  <div class="form-content">
+    <h2 mat-subheader>Reisen suchen</h2>
+    <div class="pl-3 pr-3">
+      <mat-form-field>
+        <input matInput [formControl]="sucheControl" placeholder="Suche">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <mat-list>
+      <section class="scroll-container" [perfectScrollbar]="{}">
+        <ng-container *ngFor="let reise of filteredReisen$ | async">
+          <app-reise-list-item
+            [item]="reise"
+            (addAction)="addToCart(reise)">
+          </app-reise-list-item>
+        </ng-container>
+      </section>
+    </mat-list>
+  </div>
+</form>

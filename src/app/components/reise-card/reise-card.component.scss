@@ -1,4 +1,23 @@
 .reise-card {
-  width: 200px;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 250px;
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .price {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 1.5rem;
+    }
+  }
 }

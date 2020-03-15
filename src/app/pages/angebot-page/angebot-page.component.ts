@@ -1,6 +1,6 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
-import {ReiseListComponent} from '../../components/reise-list/reise-list.component';
+import {AngebotListComponent} from '../../components/angebot-list/angebot-list.component';
 import {first} from 'rxjs/operators';
 import {Reise} from '../../models/common';
 import {MatDialog} from '@angular/material/dialog';
@@ -14,7 +14,7 @@ import {QuestionDialogComponent} from '../../components/question-dialog/question
 export class AngebotPageComponent implements OnInit {
 
   @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef;
-  angebotListRef: ComponentRef<ReiseListComponent>;
+  angebotListRef: ComponentRef<AngebotListComponent>;
   angebote: Reise[];
 
   constructor(private reiseService: ReiseService,
@@ -48,8 +48,8 @@ export class AngebotPageComponent implements OnInit {
 
   async loadComponent() {
     if (!this.angebotListRef) {
-      const {ReiseListComponent} = await import(`../../components/reise-list/reise-list.component`);
-      const factory = this.resolver.resolveComponentFactory<ReiseListComponent>(ReiseListComponent);
+      const {AngebotListComponent} = await import(`../../components/angebot-list/angebot-list.component`);
+      const factory = this.resolver.resolveComponentFactory<AngebotListComponent>(AngebotListComponent);
       this.angebotListRef = this.vcr.createComponent(factory);
       this.angebotListRef.instance.items = this.angebote;
     }

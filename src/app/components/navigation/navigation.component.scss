@@ -1,3 +1,7 @@
+main {
+  background-color: #ccc;
+}
+
 .sidenav-container {
   height: 100%;
 }
@@ -14,4 +18,11 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }

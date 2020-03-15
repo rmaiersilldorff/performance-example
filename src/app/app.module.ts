@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -8,8 +8,15 @@ import {NavigationComponent} from './components/navigation/navigation.component'
 import {LayoutModule} from '@angular/cdk/layout';
 import {ReiseCardComponent} from './components/reise-card/reise-card.component';
 import {AngebotPageComponent} from './pages/angebot-page/angebot-page.component';
-import {ReiseListComponent} from './components/reise-list/reise-list.component';
 import {MaterialModule} from './material.module';
+import {SuchePageComponent} from './pages/suche-page/suche-page.component';
+import {ReiseListItemComponent} from './components/reise-list-item/reise-list-item.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AngebotListComponent} from './components/angebot-list/angebot-list.component';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -17,7 +24,9 @@ import {MaterialModule} from './material.module';
     NavigationComponent,
     ReiseCardComponent,
     AngebotPageComponent,
-    ReiseListComponent,
+    SuchePageComponent,
+    AngebotListComponent,
+    ReiseListItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,8 +34,14 @@ import {MaterialModule} from './material.module';
     BrowserAnimationsModule,
     LayoutModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PerfectScrollbarModule,
   ],
-  providers: [],
+  providers: [{
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -4,6 +4,8 @@
 
 .reise-container {
   display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
 
   app-reise-card {
     margin-right: 1rem;

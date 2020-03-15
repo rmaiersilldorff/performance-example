@@ -1,4 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can addToCart global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-container {
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: white;
+    width: 100%;
+
+    border-radius: 10px;
+    box-shadow: 0 0 1.25rem 0.3125rem unquote('#00000026');
+  }
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.flex-none {
+  flex: none !important; // same as 0 0 auto
+}
+
+.flex-auto {
+  flex: auto !important; // same as 1 1 auto
+}
+
+.flex-fill {
+  flex: 1 1 0px !important;
+}

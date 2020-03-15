@@ -1,9 +1,23 @@
 <mat-card class="reise-card">
-  <mat-card-header>
-    {{item?.header}}
+  <mat-card-header class="flex-none">
+    <mat-card-title>{{item?.header}}</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <span>Preis: {{item?.price}}</span>
-    <p>{{item?.content}}</p>
+  <mat-card-content class="flex-fill">
+    <div class="content">
+      <ul class="flex-fill">
+        <li *ngFor="let item of item?.content">
+          {{item}}
+        </li>
+      </ul>
+      <span class="pb-1">
+        <i>Termine: {{item?.from | date:'dd.MM.yyyy'}}-{{item?.to | date: 'dd.MM.yyyy'}}</i>
+      </span>
+      <span class="price flex-none">{{item?.price | currency}}</span>
+    </div>
   </mat-card-content>
+  <mat-card-actions class="flex-none">
+    <button mat-button>Buchen</button>
+    <button mat-button>Details</button>
+  </mat-card-actions>
 </mat-card>
