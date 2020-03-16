@@ -22,6 +22,15 @@
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
           <span>Reisebüro</span>
+          <div class="basket">
+            <button
+              type="button"
+              mat-icon-button
+              routerLink="/warenkorb">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+            <span>{{basketCount$ | async}}</span>
+          </div>
         </mat-toolbar>
       </header>
       <main class="flex-fill">

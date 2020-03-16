@@ -2,6 +2,18 @@ main {
   background-color: #ccc;
 }
 
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.basket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sidenav-container {
   height: 100%;
 }

@@ -4,6 +4,7 @@ import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';
 import {first, startWith, switchMap} from 'rxjs/operators';
 import {FormControl} from '@angular/forms';
+import {BasketService} from '../../services/basket.service';
 
 @Component({
   selector: 'app-suche-page',
@@ -16,7 +17,8 @@ export class SuchePageComponent implements OnInit {
   sucheControl = new FormControl();
   filteredReisen$: Observable<Reise[]>;
 
-  constructor(private reiseService: ReiseService) {
+  constructor(private reiseService: ReiseService,
+              private basketService: BasketService) {
     reiseService.getAll()
       .pipe(first())
       .subscribe((reisen) => {
@@ -32,6 +34,6 @@ export class SuchePageComponent implements OnInit {
   }
 
   addToCart(item: Reise) {
-
+    this.basketService.add(item);
   }
 }

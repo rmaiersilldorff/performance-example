@@ -13,6 +13,7 @@ import {SuchePageComponent} from './pages/suche-page/suche-page.component';
 import {ReiseListItemComponent} from './components/reise-list-item/reise-list-item.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngebotListComponent} from './components/angebot-list/angebot-list.component';
+import {WarenkorbPageComponent} from './pages/warenkorb-page/warenkorb-page.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -27,6 +28,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SuchePageComponent,
     AngebotListComponent,
     ReiseListItemComponent,
+    WarenkorbPageComponent,
   ],
   imports: [
     BrowserModule,

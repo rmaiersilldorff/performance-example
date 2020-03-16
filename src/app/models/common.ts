@@ -6,3 +6,7 @@ export interface Reise {
   to: Date;
   price: number;
 }
+
+export interface Basket {
+  items: Reise[];
+}
