@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit, ɵrenderComponent} from '@angular/core';
+import {Component, Injector, OnInit, ɵrenderComponent, ɵLifecycleHooksFeature} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';
@@ -42,7 +42,7 @@ export class SuchePageComponent implements OnInit {
 
   renderComponent() {
     import('../../components/counter/counter.component').then((c) => {
-      ɵrenderComponent(c.CounterComponent, {host: 'my-counter', injector: this.injector});
+      ɵrenderComponent(c.CounterComponent, {host: 'my-counter', injector: this.injector, hostFeatures: [ɵLifecycleHooksFeature]});
     });
   }
 }

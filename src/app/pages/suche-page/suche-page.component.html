@@ -6,6 +6,7 @@
         <input matInput [formControl]="sucheControl" placeholder="Suche">
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      <my-counter></my-counter>
     </div>
     <mat-list>
       <section class="scroll-container" [perfectScrollbar]="{}">
@@ -13,7 +14,6 @@
           <app-reise-list-item
             [item]="reise"
             (addAction)="addToCart(reise)">
-            <my-counter></my-counter>
           </app-reise-list-item>
         </ng-container>
       </section>
