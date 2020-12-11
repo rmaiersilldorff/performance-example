@@ -1,20 +1,10 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  ComponentRef,
-  INJECTOR,
-  OnInit,
-  ViewChild,
-  ViewContainerRef, ɵrenderComponent,
-  ɵɵdirectiveInject
-} from '@angular/core';
+import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {AngebotListComponent} from '../../components/angebot-list/angebot-list.component';
 import {first} from 'rxjs/operators';
 import {Reise} from '../../models/common';
 import {MatDialog} from '@angular/material/dialog';
 import {QuestionDialogComponent} from '../../components/question-dialog/question-dialog.component';
-import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-angebot-page',
@@ -63,11 +53,6 @@ export class AngebotPageComponent implements OnInit {
       this.angebotListRef = this.vcr.createComponent(factory);
       this.angebotListRef.instance.items = this.angebote;
     }
-  }
-
-  loadAngebotListComponent() {
-    const injector = ɵɵdirectiveInject(INJECTOR);
-    ɵrenderComponent(AppComponent, {host: 'my-host', injector});
   }
 
 }

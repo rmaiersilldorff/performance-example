@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Injector, Input, OnInit, Output, ɵrenderComponent} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({

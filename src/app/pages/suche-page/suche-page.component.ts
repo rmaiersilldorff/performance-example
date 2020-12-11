@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit, ɵrenderComponent} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';
@@ -18,7 +18,8 @@ export class SuchePageComponent implements OnInit {
   filteredReisen$: Observable<Reise[]>;
 
   constructor(private reiseService: ReiseService,
-              private basketService: BasketService) {
+              private basketService: BasketService,
+              private injector: Injector) {
     reiseService.getAll()
       .pipe(first())
       .subscribe((reisen) => {
@@ -31,9 +32,17 @@ export class SuchePageComponent implements OnInit {
       switchMap(text => this.reiseService.search(text)),
       startWith(this.reisen)
     );
+    this.renderComponent();
   }
 
   addToCart(item: Reise) {
     this.basketService.add(item);
+  }
+
+
+  renderComponent() {
+    import('../../components/counter/counter.component').then((c) => {
+      ɵrenderComponent(c.CounterComponent, {host: 'my-counter', injector: this.injector});
+    });
   }
 }
