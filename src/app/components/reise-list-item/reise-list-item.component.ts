@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Injector, Input, OnInit, Output, ɵrenderComponent} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({
   selector: 'app-reise-list-item',
   templateUrl: './reise-list-item.component.html',
-  styleUrls: ['./reise-list-item.component.scss']
+  styleUrls: ['./reise-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReiseListItemComponent implements OnInit {
 

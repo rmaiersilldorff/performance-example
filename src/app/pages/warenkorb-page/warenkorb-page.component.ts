@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit, ɵLifecycleHooksFeature, ɵrenderComponent} from '@angular/core';
 import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';
 import {BasketService} from '../../services/basket.service';
@@ -12,10 +12,18 @@ export class WarenkorbPageComponent implements OnInit {
 
   basket$: Observable<Reise[]>;
 
-  constructor(private basketService: BasketService) {
+  constructor(private basketService: BasketService,
+              private injector: Injector) {
     this.basket$ = this.basketService.selectAll();
   }
 
   ngOnInit() {
+    this.renderComponent();
+  }
+
+  renderComponent() {
+    import('../../components/counter/counter.component').then((c) => {
+      ɵrenderComponent(c.CounterComponent, {host: 'my-counter', injector: this.injector, hostFeatures: [ɵLifecycleHooksFeature]});
+    });
   }
 }

@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:stats": "ng build --stats-json",
+    "bundle-report": "webpack-bundle-analyzer dist/performance-app/stats.json"
   },
   "private": true,
   "dependencies": {
@@ -34,9 +36,9 @@
     "@angular/cli": "~11.0.4",
     "@angular/compiler-cli": "~11.0.4",
     "@angular/language-service": "~11.0.4",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -48,6 +50,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.5"
+    "typescript": "~4.0.5",
+    "webpack-bundle-analyzer": "^4.2.0"
   }
 }

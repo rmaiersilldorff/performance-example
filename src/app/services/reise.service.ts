@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Reise} from '../models/common';
-import {map} from 'rxjs/operators';
+import {delay, map} from 'rxjs/operators';
 import * as faker from 'faker/locale/de';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class ReiseService {
   }
 
   getAll(): Observable<Reise[]> {
-    return this.reisen$;
+    return this.reisen$.pipe(delay(100));
   }
 
   search(value: string): Observable<Reise[]> {
