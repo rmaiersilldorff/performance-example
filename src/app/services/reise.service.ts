@@ -10,14 +10,22 @@ import * as faker from 'faker/locale/de';
 export class ReiseService {
 
   counter = 0;
-  length = faker.random.number({min: 10, max: 20});
+  length = faker.random.number({min: 10, max: 18});
   reisen$: Observable<Reise[]> = of(Array.from(new Array(this.length)).map(() => this.fakeReise()));
 
   constructor() {
   }
 
   getAngebote(): Observable<Reise[]> {
-    return this.reisen$;
+    return this.reisen$.pipe(delay(100));
+  }
+
+  changeAngebot(id: number): Observable<Reise[]> {
+    return this.reisen$.pipe(
+      map((reisen) =>
+        reisen.map((reise, index) => index === id ? ({...reise, header: `Item ${reise.id} has changed`}) : reise)
+      ),
+      delay(100));
   }
 
   getAll(): Observable<Reise[]> {

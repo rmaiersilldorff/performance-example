@@ -16,6 +16,7 @@ export class AngebotPageComponent implements OnInit {
   @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef;
   angebotListRef: ComponentRef<AngebotListComponent>;
   angebote: Reise[];
+  changeIndex = -1;
 
   constructor(private reiseService: ReiseService,
               private resolver: ComponentFactoryResolver,
@@ -27,7 +28,16 @@ export class AngebotPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadComponent();
+  }
+
+  changeItem() {
+    /*this.angebote = this.angebote.map((item, index) => index === 0 ? ({...item, header: 'Changed Item'}) : item);
+    this.angebote[0].header = 'Changed';*/
+    (this.changeIndex + 1) <= this.angebote.length ? this.changeIndex++ : this.changeIndex = 0;
+    this.reiseService.changeAngebot(this.changeIndex).pipe(first())
+      .subscribe((angebote) => {
+        this.angebote = angebote;
+      });
   }
 
   async openDialog() {

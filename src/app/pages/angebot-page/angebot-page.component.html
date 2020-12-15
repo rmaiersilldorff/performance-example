@@ -1,6 +1,7 @@
 <div class="p-4">
   <ng-template #vcr></ng-template>
+  <app-angebot-list [items]="angebote"></app-angebot-list>
   <button type="button" mat-raised-button class="mt-2"
-          (click)="openDialog()">Open Dialog
+          (click)="changeItem()">Change Item
   </button>
 </div>

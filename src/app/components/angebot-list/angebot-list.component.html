@@ -1,4 +1,7 @@
 <div class="reise-container" [perfectScrollbar]="{}">
-  <app-reise-card [item]="item" *ngFor="let item of items" class="pb-2">
-  </app-reise-card>
+  <ng-container *ngFor="let item of items">
+    <app-reise-card class="pb-2"
+                    [item]="item">
+    </app-reise-card>
+  </ng-container>
 </div>

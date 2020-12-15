@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, NgZone} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({
@@ -6,14 +6,24 @@ import {Reise} from '../../models/common';
   templateUrl: './reise-card.component.html',
   styleUrls: ['./reise-card.component.scss']
 })
-export class ReiseCardComponent implements OnInit {
+export class ReiseCardComponent {
 
   @Input() item: Reise;
 
-  constructor() {
+  constructor(private element: ElementRef,
+              private zone: NgZone) {
   }
 
-  ngOnInit(): void {
+  blink() {
+    this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
+
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.element.nativeElement.firstChild.style.backgroundColor = 'white';
+      }, 1000);
+    });
+
+    return null;
   }
 
 }
