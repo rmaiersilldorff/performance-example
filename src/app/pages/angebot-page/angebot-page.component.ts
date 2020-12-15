@@ -1,4 +1,13 @@
-import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {AngebotListComponent} from '../../components/angebot-list/angebot-list.component';
 import {first} from 'rxjs/operators';
@@ -20,7 +29,8 @@ export class AngebotPageComponent implements OnInit {
 
   constructor(private reiseService: ReiseService,
               private resolver: ComponentFactoryResolver,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private cdr: ChangeDetectorRef) {
     this.reiseService.getAngebote().pipe(first())
       .subscribe((angebote) => {
         this.angebote = angebote;
@@ -31,10 +41,17 @@ export class AngebotPageComponent implements OnInit {
   }
 
   changeItem() {
-    /*this.angebote = this.angebote.map((item, index) => index === 0 ? ({...item, header: 'Changed Item'}) : item);
-    this.angebote[0].header = 'Changed';*/
+    // this.angebote = this.angebote.map((item, index) => index === 0 ? ({...item, header: 'Changed Item'}) : item);
+    // this.angebote[0].header = 'Changed';
     (this.changeIndex + 1) <= this.angebote.length ? this.changeIndex++ : this.changeIndex = 0;
-    this.reiseService.changeAngebot(this.changeIndex).pipe(first())
+    /*this.reiseService.changeAngebot(this.changeIndex).pipe(first())
+      .subscribe((angebote) => {
+        this.angebote = angebote;
+      });*/
+  }
+
+  addItem() {
+    this.reiseService.addAngebot().pipe(first())
       .subscribe((angebote) => {
         this.angebote = angebote;
       });
