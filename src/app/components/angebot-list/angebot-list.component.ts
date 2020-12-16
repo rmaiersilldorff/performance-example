@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({
@@ -14,6 +14,10 @@ export class AngebotListComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  trackByFn(index: number, item: Reise) {
+    return item.id;
   }
 
 }

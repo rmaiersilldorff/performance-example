@@ -1,5 +1,5 @@
 <div class="reise-container" [perfectScrollbar]="{}">
-  <ng-container *ngFor="let item of items">
+  <ng-container *ngFor="let item of items; trackBy: trackByFn">
     <app-reise-card class="pb-2"
                     [item]="item">
     </app-reise-card>
