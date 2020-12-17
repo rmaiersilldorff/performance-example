@@ -18,7 +18,7 @@ export class WarenkorbPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.renderComponent();
+    // this.renderComponent();
   }
 
   renderComponent() {

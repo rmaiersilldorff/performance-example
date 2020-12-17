@@ -36,7 +36,7 @@ export class ReiseService {
   }
 
   getAll(): Observable<Reise[]> {
-    return this.reisen$.pipe(delay(100));
+    return this.reisen$;
   }
 
   search(value: string): Observable<Reise[]> {

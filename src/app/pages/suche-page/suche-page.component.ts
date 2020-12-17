@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector, OnInit, ɵLifecycleHooksFeature, ɵrenderComponent} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';

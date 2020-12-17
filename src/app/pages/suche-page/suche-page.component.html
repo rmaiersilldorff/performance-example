@@ -9,7 +9,7 @@
     </div>
     <mat-list>
       <section class="scroll-container" [perfectScrollbar]="{}">
-        <ng-container *ngFor="let reise of reisen">
+        <ng-container *ngFor="let reise of filteredReisen$ | async">
           <app-reise-list-item
             [item]="reise"
             (addAction)="addToCart(reise)">

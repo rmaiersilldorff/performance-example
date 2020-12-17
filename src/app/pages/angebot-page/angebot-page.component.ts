@@ -35,10 +35,10 @@ export class AngebotPageComponent implements OnInit {
     // this.angebote = this.angebote.map((item, index) => index === 0 ? ({...item, header: 'Changed Item'}) : item);
     // this.angebote[0].header = 'Changed';
     (this.changeIndex + 1) <= this.angebote.length ? this.changeIndex++ : this.changeIndex = 0;
-    /*this.reiseService.changeAngebot(this.changeIndex).pipe(first())
+    this.reiseService.changeAngebot(this.changeIndex).pipe(first())
       .subscribe((angebote) => {
         this.angebote = angebote;
-      });*/
+      });
   }
 
   addItem() {
