@@ -8,20 +8,16 @@ import {BasketService} from '../../services/basket.service';
 import {ReiseListItemComponent} from '../../components/reise-list-item/reise-list-item.component';
 import {MaterialModule} from '../../material.module';
 import {CommonModule} from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BrowserModule} from '@angular/platform-browser';
 
 @Component({
   standalone: true,
-  selector: 'suche-page',
+  selector: 'app-root',
   imports: [
     ReiseListItemComponent,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    BrowserModule
+    CommonModule
   ],
   templateUrl: './suche-page.component.html',
   styleUrls: ['./suche-page.component.scss']

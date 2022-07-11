@@ -10,7 +10,7 @@
     <mat-list>
       <section class="scroll-container">
         <ng-container>
-          <reise-list-item *ngFor="let reise of filteredReisen$"
+          <reise-list-item *ngFor="let reise of (filteredReisen$ | async)"
                            [reise]="reise"
                            (addAction)="addToCart(reise)">
           </reise-list-item>
