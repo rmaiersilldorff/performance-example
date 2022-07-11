@@ -6,6 +6,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReiseListItemComponent} from './components/reise-list-item/reise-list-item.component';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {SucheRoutingModule} from './suche-routing.module';
+import {LetModule, PushModule} from '@rx-angular/template';
+import {ForModule} from '@rx-angular/template/experimental/for';
+import {ViewportPrioModule} from '@rx-angular/template/experimental/viewport-prio';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -23,7 +26,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     ReactiveFormsModule,
     PerfectScrollbarModule,
-    SucheRoutingModule
+    SucheRoutingModule,
+    LetModule,
+    PushModule,
+    ViewportPrioModule,
+    ForModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{

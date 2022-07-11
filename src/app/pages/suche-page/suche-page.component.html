@@ -9,10 +9,10 @@
     </div>
     <mat-list>
       <section class="scroll-container" [perfectScrollbar]="{}">
-        <ng-container *ngFor="let reise of filteredReisen$ | async">
-          <app-reise-list-item
-            [item]="reise"
-            (addAction)="addToCart(reise)">
+        <ng-container>
+          <app-reise-list-item *rxFor="let reise of filteredReisen$"
+                               [reise]="reise"
+                               (addAction)="addToCart(reise)">
           </app-reise-list-item>
         </ng-container>
       </section>

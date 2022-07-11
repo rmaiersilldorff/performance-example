@@ -8,7 +8,7 @@ import {Reise} from '../../models/common';
 })
 export class ReiseCardComponent {
 
-  @Input() item: Reise;
+  @Input() reise: Reise;
 
   constructor(private element: ElementRef,
               private zone: NgZone) {

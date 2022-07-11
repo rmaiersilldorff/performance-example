@@ -3,10 +3,10 @@
     <h2 mat-subheader>Warenkorb</h2>
     <mat-list>
       <section class="scroll-container" [perfectScrollbar]="{}">
-        <ng-container *ngFor="let item of basket$ | async">
+        <ng-container *rxFor="let basketItem of basket$">
           <mat-list-item>
-            <h4 mat-line>{{item?.header}}</h4>
-            <p mat-line>{{item?.content}} </p>
+            <h4 mat-line>{{basketItem?.header}}</h4>
+            <p mat-line>{{basketItem?.content}} </p>
           </mat-list-item>
         </ng-container>
       </section>

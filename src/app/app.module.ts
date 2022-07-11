@@ -12,6 +12,9 @@ import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngebotListComponent} from './components/angebot-list/angebot-list.component';
 import {WarenkorbPageComponent} from './pages/warenkorb-page/warenkorb-page.component';
+import {ViewportPrioModule} from '@rx-angular/template/experimental/viewport-prio';
+import {LetModule, PushModule} from '@rx-angular/template';
+import {ForModule} from '@rx-angular/template/experimental/for';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -35,6 +38,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     ReactiveFormsModule,
     PerfectScrollbarModule,
+    LetModule,
+    PushModule,
+    ViewportPrioModule,
+    ForModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{

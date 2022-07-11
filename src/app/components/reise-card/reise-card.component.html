@@ -1,19 +1,19 @@
 <mat-card class="reise-card">
   <mat-card-header class="flex-none">
-    <mat-card-title>{{item?.header}}</mat-card-title>
+    <mat-card-title>{{reise.header}}</mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="flex-fill">
     <div class="content">
       <ul class="flex-fill">
-        <li *ngFor="let item of item?.content">
+        <li *rxFor="let item of reise.content$">
           {{item}}
         </li>
       </ul>
       <span class="pb-1">
-        <i>Termine: {{item?.from | date:'dd.MM.yyyy'}}-{{item?.to | date: 'dd.MM.yyyy'}}</i>
+        <em>Termine: {{reise.from | date:'dd.MM.yyyy'}}-{{reise.to | date: 'dd.MM.yyyy'}}</em>
       </span>
-      <span class="price flex-none">{{item?.price | currency}}</span>
+      <span class="price flex-none">{{reise.price | currency}}</span>
       <!--{{blink()}}-->
     </div>
   </mat-card-content>

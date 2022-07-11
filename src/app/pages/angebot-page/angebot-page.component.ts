@@ -1,20 +1,20 @@
-import {ChangeDetectorRef, Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {ChangeDetectorRef, Component, ComponentFactoryResolver, Injector, ViewChild, ViewContainerRef} from '@angular/core';
 import {ReiseService} from '../../services/reise.service';
 import {first} from 'rxjs/operators';
 import {Reise} from '../../models/common';
 import {MatDialog} from '@angular/material/dialog';
-import {QuestionDialogComponent} from '../../components/question-dialog/question-dialog.component';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-angebot-page',
   templateUrl: './angebot-page.component.html',
   styleUrls: ['./angebot-page.component.scss']
 })
-export class AngebotPageComponent implements OnInit {
+export class AngebotPageComponent {
 
   @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef;
   angebotListRef;
-  angebote: Reise[];
+  angebote$ = new BehaviorSubject<Reise[]>([]);
   changeIndex = -1;
 
   constructor(private reiseService: ReiseService,
@@ -24,27 +24,24 @@ export class AngebotPageComponent implements OnInit {
               private injector: Injector) {
     this.reiseService.getAngebote().pipe(first())
       .subscribe((angebote) => {
-        this.angebote = angebote;
+        this.angebote$.next(angebote);
       });
-  }
-
-  ngOnInit() {
   }
 
   changeItem() {
     // this.angebote = this.angebote.map((item, index) => index === 0 ? ({...item, header: 'Changed Item'}) : item);
     // this.angebote[0].header = 'Changed';
-    (this.changeIndex + 1) <= this.angebote.length ? this.changeIndex++ : this.changeIndex = 0;
+    (this.changeIndex + 1) <= this.angebote$.value.length ? this.changeIndex++ : this.changeIndex = 0;
     this.reiseService.changeAngebot(this.changeIndex).pipe(first())
       .subscribe((angebote) => {
-        this.angebote = angebote;
+        this.angebote$.next(angebote);
       });
   }
 
   addItem() {
     this.reiseService.addAngebot().pipe(first())
       .subscribe((angebote) => {
-        this.angebote = angebote;
+        this.angebote$.next(angebote);
       });
   }
 
@@ -69,7 +66,7 @@ export class AngebotPageComponent implements OnInit {
       const {CounterComponent} = await import(`../../components/counter/counter.component`);
       const factory = this.resolver.resolveComponentFactory(CounterComponent);
       this.angebotListRef = this.vcr.createComponent(factory, 0, this.injector, []);
-      this.angebotListRef.instance.items = this.angebote;
+      this.angebotListRef.instance.items$ = this.angebote$;
     }
   }
 

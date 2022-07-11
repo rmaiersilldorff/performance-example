@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({
@@ -7,15 +7,9 @@ import {Reise} from '../../models/common';
   styleUrls: ['./reise-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ReiseListItemComponent implements OnInit {
+export class ReiseListItemComponent {
 
-  @Input() item: Reise;
+  @Input() reise: Reise;
   @Output() addAction = new EventEmitter<void>();
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 
 }
