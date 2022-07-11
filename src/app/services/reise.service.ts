@@ -49,7 +49,7 @@ export class ReiseService {
     return {
       id: this.counter++,
       header: faker.address.city(),
-      content$: new BehaviorSubject<string[]>([`${faker.random.number({min: 1, max: 21})} Nächte`, `Flug von Wien`]),
+      content: [`${faker.random.number({min: 1, max: 21})} Nächte`, `Flug von Wien`],
       from: new Date(),
       to: new Date(),
       price: faker.random.number({min: 400, max: 1200})

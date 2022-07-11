@@ -8,12 +8,12 @@
       </mat-form-field>
     </div>
     <mat-list>
-      <section class="scroll-container" [perfectScrollbar]="{}">
+      <section class="scroll-container">
         <ng-container>
-          <app-reise-list-item *rxFor="let reise of filteredReisen$"
-                               [reise]="reise"
-                               (addAction)="addToCart(reise)">
-          </app-reise-list-item>
+          <reise-list-item *ngFor="let reise of filteredReisen$"
+                           [reise]="reise"
+                           (addAction)="addToCart(reise)">
+          </reise-list-item>
         </ng-container>
       </section>
     </mat-list>
