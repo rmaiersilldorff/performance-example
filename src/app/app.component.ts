@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {ZonelessRouterService} from './services/zoneless-router.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,4 @@ import {ZonelessRouterService} from './services/zoneless-router.service';
 })
 export class AppComponent {
   title = 'performance-app';
-
-  constructor(private zonelessRouting: ZonelessRouterService) {
-    zonelessRouting.init();
-  }
-
 }

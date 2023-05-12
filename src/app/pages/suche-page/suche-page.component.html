@@ -1,21 +1,36 @@
-<form autocomplete="off" class="form-container">
-  <div class="form-content">
-    <h2 mat-subheader>Reisen suchen</h2>
-    <div class="pl-3 pr-3">
-      <mat-form-field>
-        <input matInput [formControl]="sucheControl" placeholder="Suche">
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+<form autocomplete="off" class="form-container" (keyup.enter)="search()">
+    <div class="form-content">
+        <h2 mat-subheader>Reisen suchen</h2>
+        <div class="d-inline-block" >
+            <div class="pl-3 pr-3 d-inline-block">
+                <mat-form-field>
+                    <mat-label>Stadt</mat-label>
+                    <input matInput [(ngModel)]="destination" placeholder="Ziel" name="destination">
+                    <mat-hint>Urlaubsziel</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="pl-3 pr-3 d-inline-block">
+                <mat-form-field>
+                    <mat-label>Nächte</mat-label>
+                    <input matInput [(ngModel)]="nights" placeholder="Anzahl" name="nights">
+                    <mat-hint>Anzahl der Nächte</mat-hint>
+                </mat-form-field>
+            </div>
+            <button mat-icon-button matSuffix (click)="search()" class="suche-icon">
+                <mat-icon matSuffix>search</mat-icon>
+            </button>
+        </div>
+        <mat-list>
+            <ng-scrollbar autoHeightDisabled="false">
+                <section class="scroll-container">
+                    <ng-container *ngFor="let reise of filteredReisen">
+                        <app-reise-list-item
+                                [reise]="reise"
+                                (addAction)="addToCart(reise)">
+                        </app-reise-list-item>
+                    </ng-container>
+                </section>
+            </ng-scrollbar>
+        </mat-list>
     </div>
-    <mat-list>
-      <section class="scroll-container" [perfectScrollbar]="{}">
-        <ng-container>
-          <app-reise-list-item *rxFor="let reise of filteredReisen$"
-                               [reise]="reise"
-                               (addAction)="addToCart(reise)">
-          </app-reise-list-item>
-        </ng-container>
-      </section>
-    </mat-list>
-  </div>
 </form>

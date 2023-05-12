@@ -1,6 +1,6 @@
-<div class="reise-container" [perfectScrollbar]="{}">
-  <app-reise-card *rxFor="let angebot of angebote$; trackBy: trackByFn"
-                  [reise]="angebot"
-                  class="pb-2">
-  </app-reise-card>
-</div>
+<ng-scrollbar autoHeightDisabled="false">
+  <div class="reise-container" *ngFor="let angebot of (angebote$ | async); trackBy: trackByFn">
+    <app-reise-card [reise]="angebot">
+    </app-reise-card>
+  </div>
+</ng-scrollbar>

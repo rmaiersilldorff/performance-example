@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,13 +11,10 @@ import {MaterialModule} from './material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AngebotListComponent} from './components/angebot-list/angebot-list.component';
 import {WarenkorbPageComponent} from './pages/warenkorb-page/warenkorb-page.component';
-import {ViewportPrioModule} from '@rx-angular/template/experimental/viewport-prio';
-import {LetModule, PushModule} from '@rx-angular/template';
-import {ForModule} from '@rx-angular/template/experimental/for';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
+import {NgScrollbarModule} from 'ngx-scrollbar';
+import {StoreModule} from '@ngrx/store';
+import {environment} from '../environments/environment';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -33,21 +29,18 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Book Store DevTools',
+      logOnly: environment.production,
+    }),
     LayoutModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    PerfectScrollbarModule,
-    LetModule,
-    PushModule,
-    ViewportPrioModule,
-    ForModule
+    NgScrollbarModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{
-    provide: PERFECT_SCROLLBAR_CONFIG,
-    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

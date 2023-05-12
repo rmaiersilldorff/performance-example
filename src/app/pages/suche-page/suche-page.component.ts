@@ -1,39 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {ReiseService} from '../../services/reise.service';
+import {Component} from '@angular/core';
 import {Reise} from '../../models/common';
-import {Observable} from 'rxjs';
-import {first, startWith, switchMap} from 'rxjs/operators';
-import {FormControl} from '@angular/forms';
-import {BasketService} from '../../services/basket.service';
 
 @Component({
-  selector: 'app-suche-page',
-  templateUrl: './suche-page.component.html',
-  styleUrls: ['./suche-page.component.scss']
+    selector: 'app-suche-page',
+    templateUrl: './suche-page.component.html',
+    styleUrls: ['./suche-page.component.scss']
 })
-export class SuchePageComponent implements OnInit {
+export class SuchePageComponent {
 
-  reisen: Reise[];
-  sucheControl = new FormControl();
-  filteredReisen$: Observable<Reise[]>;
+    reisen: Reise[];
+    filteredReisen: Reise[] = [];
+    destination = '';
+    nights = 1;
 
-  constructor(private reiseService: ReiseService,
-              private basketService: BasketService) {
-    reiseService.getAll()
-      .pipe(first())
-      .subscribe((reisen) => {
-        this.reisen = reisen;
-      });
-  }
+    addToCart(item: Reise) {
+        throw new Error('not implemented yet');
+    }
 
-  ngOnInit() {
-    this.filteredReisen$ = this.sucheControl.valueChanges.pipe(
-      switchMap(text => this.reiseService.search(text)),
-      startWith(this.reisen)
-    );
-  }
-
-  addToCart(item: Reise) {
-    this.basketService.add(item);
-  }
+    search(): void {
+        throw new Error('not implemented yet');
+    }
 }

@@ -1,10 +1,11 @@
-import {Component, ElementRef, Input, NgZone} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, NgZone} from '@angular/core';
 import {Reise} from '../../models/common';
 
 @Component({
   selector: 'app-reise-card',
   templateUrl: './reise-card.component.html',
-  styleUrls: ['./reise-card.component.scss']
+  styleUrls: ['./reise-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReiseCardComponent {
 
@@ -22,8 +23,6 @@ export class ReiseCardComponent {
         this.element.nativeElement.firstChild.style.backgroundColor = 'white';
       }, 1000);
     });
-
-    return null;
   }
 
 }

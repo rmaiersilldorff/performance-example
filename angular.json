@@ -29,6 +29,7 @@
             "styles": [
               "./node_modules/bootstrap-4-grid/css/grid.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/theme.scss",
               "src/styles.scss"
             ],
             "allowedCommonJsDependencies": [
@@ -103,6 +104,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,7 +125,6 @@
       }
     }
   },
-  "defaultProject": "performance-app",
   "cli": {
     "analytics": "336df2c0-c003-401e-b502-f78e5b9c4a34"
   }
