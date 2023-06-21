@@ -5,14 +5,14 @@
             <div class="pl-3 pr-3 d-inline-block">
                 <mat-form-field>
                     <mat-label>Stadt</mat-label>
-                    <input matInput [(ngModel)]="destination" placeholder="Ziel" name="destination">
+                    <input matInput [ngModel]="destination()" (ngModelChange)="destination.set($event)" placeholder="Ziel" name="destination">
                     <mat-hint>Urlaubsziel</mat-hint>
                 </mat-form-field>
             </div>
             <div class="pl-3 pr-3 d-inline-block">
                 <mat-form-field>
                     <mat-label>Nächte</mat-label>
-                    <input matInput [(ngModel)]="nights" placeholder="Anzahl" name="nights">
+                    <input matInput [ngModel]="nights()" (ngModelChange)="nights.set($event)" placeholder="Anzahl" name="nights">
                     <mat-hint>Anzahl der Nächte</mat-hint>
                 </mat-form-field>
             </div>
@@ -23,7 +23,7 @@
         <mat-list>
             <ng-scrollbar autoHeightDisabled="false">
                 <section class="scroll-container">
-                    <ng-container *ngFor="let reise of filteredReisen">
+                    <ng-container *ngFor="let reise of filteredReisen()">
                         <app-reise-list-item
                                 [reise]="reise"
                                 (addAction)="addToCart(reise)">
