@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ɵdetectChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -18,13 +18,11 @@ export class CounterComponent {
 
   plus() {
     this.counter++;
-    ɵdetectChanges(this);
   }
 
   reset() {
     this.counter = 0;
     this.counterReset.emit();
-    ɵdetectChanges(this);
   }
 
 

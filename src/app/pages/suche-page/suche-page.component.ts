@@ -3,13 +3,15 @@ import {Reise} from '../../models/common';
 import {ReiseService} from '../../services/reise.service';
 import {combineLatest, interval, lastValueFrom} from 'rxjs';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {initialState} from '../../+state/reducers';
-import {Store} from '@ngrx/store';
-import {selectAngebote} from '../../+state/selectors';
+import {AngebotStore} from '../../+state/angebot.store';
+import {MatFormField} from '@angular/material/input';
 
 @Component({
     selector: 'app-suche-page',
     templateUrl: './suche-page.component.html',
+    imports: [
+        MatFormField
+    ],
     styleUrls: ['./suche-page.component.scss']
 })
 export class SuchePageComponent {
@@ -19,7 +21,7 @@ export class SuchePageComponent {
     destination = signal('');
     nights = signal(1);
 
-    store = inject(Store);
+    readonly store = inject(AngebotStore);
 
     reiseService = inject(ReiseService);
 
@@ -35,7 +37,7 @@ export class SuchePageComponent {
     critera2$ = toObservable(this.criteria);
 
     // select Signal from store
-    angebote = this.store.selectSignal(selectAngebote);
+    angebote = this.store.loadAngebote();
 
 
     constructor() {

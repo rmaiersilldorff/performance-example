@@ -1,19 +1,25 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, NgZone} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject } from '@angular/core';
 import {Reise} from '../../models/common';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/material/card';
 
 @Component({
   selector: 'app-reise-card',
   templateUrl: './reise-card.component.html',
   styleUrls: ['./reise-card.component.scss'],
+  imports: [
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatCardActions
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReiseCardComponent {
+  private element = inject(ElementRef);
+  private zone = inject(NgZone);
+
 
   @Input() reise: Reise;
-
-  constructor(private element: ElementRef,
-              private zone: NgZone) {
-  }
 
   blink() {
     this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
