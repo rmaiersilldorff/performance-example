@@ -8,6 +8,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgScrollbarModule} from 'ngx-scrollbar';
 import {AppComponent} from './app/app.component';
+import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 if (environment.production) {
     enableProdMode();
@@ -16,6 +17,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, AppRoutingModule, LayoutModule, FormsModule, ReactiveFormsModule, NgScrollbarModule),
+        {provide: LocationStrategy, useClass: PathLocationStrategy},
         provideAnimations()
     ]
 })

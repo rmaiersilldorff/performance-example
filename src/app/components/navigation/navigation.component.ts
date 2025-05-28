@@ -3,24 +3,29 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
 import {BasketService} from '../../services/basket.service';
-import {MatSidenav, MatSidenavContainer} from '@angular/material/sidenav';
+import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
 import {AsyncPipe} from '@angular/common';
-import {MatNavList} from '@angular/material/list';
-import {RouterOutlet} from '@angular/router';
+import {MatListItem, MatNavList} from '@angular/material/list';
+import {RouterLink, RouterOutlet} from '@angular/router';
+import {MatIconButton} from '@angular/material/button';
 
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
     imports: [
         MatSidenavContainer,
+        MatSidenavContent,
         MatSidenav,
         MatToolbar,
         MatIcon,
         AsyncPipe,
         MatNavList,
-        RouterOutlet
+        RouterOutlet,
+        MatListItem,
+        RouterLink,
+        MatIconButton
     ],
     styleUrls: ['./navigation.component.scss']
 })

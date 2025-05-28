@@ -2,9 +2,10 @@ import {Component, inject} from '@angular/core';
 import {Reise} from '../../models/common';
 import {Observable} from 'rxjs';
 import {BasketService} from '../../services/basket.service';
-import {MatList, MatListItem} from '@angular/material/list';
+import {MatList, MatListItem, MatListSubheaderCssMatStyler} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
 import {AsyncPipe} from '@angular/common';
+import {MatLine} from '@angular/material/core';
 
 @Component({
     selector: 'app-warenkorb-page',
@@ -13,7 +14,9 @@ import {AsyncPipe} from '@angular/common';
         MatList,
         NgScrollbar,
         MatListItem,
-        AsyncPipe
+        AsyncPipe,
+        MatListSubheaderCssMatStyler,
+        MatLine
     ],
     styleUrls: ['./warenkorb-page.component.scss']
 })

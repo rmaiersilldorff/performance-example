@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input, 
 import {Reise} from '../../models/common';
 import {MatListItem} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
+import {MatIconButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-reise-list-item',
@@ -9,7 +10,8 @@ import {MatIcon} from '@angular/material/icon';
   styleUrls: ['./reise-list-item.component.scss'],
   imports: [
     MatListItem,
-    MatIcon
+    MatIcon,
+    MatIconButton
   ],
   // changeDetection: ChangeDetectionStrategy.OnPush
 })

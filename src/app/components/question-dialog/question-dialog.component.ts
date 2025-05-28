@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
+import {MatDialogActions, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-question-dialog',
@@ -20,19 +22,18 @@ import {Subject} from 'rxjs';
       </button>
     </div>
   `,
+  imports: [
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatButton
+  ],
   styleUrls: ['./question-dialog.component.scss']
 })
-export class QuestionDialogComponent implements OnInit {
+export class QuestionDialogComponent {
 
   title: string;
   message: string;
 
   close = new Subject<boolean>();
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
 }

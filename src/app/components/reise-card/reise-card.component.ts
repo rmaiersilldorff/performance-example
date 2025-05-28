@@ -1,6 +1,13 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject} from '@angular/core';
 import {Reise} from '../../models/common';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
+import {
+    MatCard,
+    MatCardActions,
+    MatCardContent,
+    MatCardHeader,
+    MatCardSubtitle,
+    MatCardTitle
+} from '@angular/material/card';
 import {CurrencyPipe, DatePipe} from '@angular/common';
 
 @Component({
@@ -12,6 +19,7 @@ import {CurrencyPipe, DatePipe} from '@angular/common';
         MatCardHeader,
         MatCardContent,
         MatCardActions,
+        MatCardSubtitle,
         MatCardTitle,
         DatePipe,
         CurrencyPipe
@@ -21,7 +29,6 @@ import {CurrencyPipe, DatePipe} from '@angular/common';
 export class ReiseCardComponent {
     private element = inject(ElementRef);
     private zone = inject(NgZone);
-
 
     @Input() reise: Reise;
 
