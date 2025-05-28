@@ -1,37 +1,38 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject} from '@angular/core';
 import {Reise} from '../../models/common';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {CurrencyPipe, DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-reise-card',
-  templateUrl: './reise-card.component.html',
-  styleUrls: ['./reise-card.component.scss'],
-  imports: [
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    MatCardActions,
-    DatePipe,
-    CurrencyPipe
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-reise-card',
+    templateUrl: './reise-card.component.html',
+    styleUrls: ['./reise-card.component.scss'],
+    imports: [
+        MatCard,
+        MatCardHeader,
+        MatCardContent,
+        MatCardActions,
+        MatCardTitle,
+        DatePipe,
+        CurrencyPipe
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReiseCardComponent {
-  private element = inject(ElementRef);
-  private zone = inject(NgZone);
+    private element = inject(ElementRef);
+    private zone = inject(NgZone);
 
 
-  @Input() reise: Reise;
+    @Input() reise: Reise;
 
-  blink() {
-    this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
+    blink() {
+        this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
 
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.element.nativeElement.firstChild.style.backgroundColor = 'white';
-      }, 1000);
-    });
-  }
+        this.zone.runOutsideAngular(() => {
+            setTimeout(() => {
+                this.element.nativeElement.firstChild.style.backgroundColor = 'white';
+            }, 1000);
+        });
+    }
 
 }

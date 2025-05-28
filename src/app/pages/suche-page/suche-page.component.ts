@@ -10,6 +10,7 @@ import {MatIcon} from '@angular/material/icon';
 import {ReiseListItemComponent} from '../../components/reise-list-item/reise-list-item.component';
 import {MatList} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
+import {MatLabel} from '@angular/material/form-field';
 
 @Component({
     selector: 'app-suche-page',
@@ -21,6 +22,7 @@ import {NgScrollbar} from 'ngx-scrollbar';
         MatHint,
         ReiseListItemComponent,
         MatList,
+        MatLabel,
         NgScrollbar
     ],
     styleUrls: ['./suche-page.component.scss']
