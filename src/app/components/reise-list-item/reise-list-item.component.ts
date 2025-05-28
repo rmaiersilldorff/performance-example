@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, NgZone, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input, output } from '@angular/core';
 import {Reise} from '../../models/common';
 import {MatListItem} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
@@ -18,8 +18,8 @@ export class ReiseListItemComponent {
   private zone = inject(NgZone);
 
 
-  @Input() reise: Reise;
-  @Output() addAction = new EventEmitter<void>();
+  readonly reise = input<Reise>(undefined);
+  readonly addAction = output<void>();
 
   blink() {
     this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';

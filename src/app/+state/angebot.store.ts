@@ -26,7 +26,7 @@ export const AngebotStore = signalStore(
             pipe(
                 tap(() => patchState(store, {isLoading: true})),
                 switchMap(() => {
-                    return this.reiseService.getAngebote().pipe(
+                    return reiseService.getAngebote().pipe(
                         tapResponse({
                             next: (angebote: Reise[]) => patchState(store, {angebote}),
                             error: (error) => console.log(error),
