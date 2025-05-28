@@ -1,6 +1,7 @@
 {
   "name": "performance-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "prepare": "husky install",
+    "generate:client": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-generator-cli generate -i docs/api/api-docs.yaml -o src/app/api -g typescript-angular && prettier --config prettier.config.js -w src/app/api",
+    "prettier:fix": "prettier -w src",
     "build:stats": "ng build --stats-json",
     "bundle-report": "webpack-bundle-analyzer dist/performance-app/stats.json"
   },
@@ -40,10 +44,12 @@
     "@angular/cli": "~19.2.13",
     "@angular/compiler-cli": "~19.2.13",
     "@angular/language-service": "~19.2.13",
+    "@openapitools/openapi-generator-cli": "^2.20.0",
     "@types/jasmine": "~5.1.7",
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^22.14.1",
     "codelyzer": "^6.0.2",
+    "husky": "9.1.7",
     "jasmine-core": "~5.6.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.4",
@@ -53,8 +59,18 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "ts-node": "~8.3.0",
     "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.28.0",
     "webpack-bundle-analyzer": "^4.10.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+      "*.{ts,js}": "eslint --fix",
+      "*.{js,ts,html,scss,css,md}": "prettier --write"
+    }
   }
 }

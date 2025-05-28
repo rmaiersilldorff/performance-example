@@ -1,0 +1,141 @@
+openapi: '3.0.0'
+
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8992/
+    description: Generated server url
+paths:
+  /api/angebot/cmd/list:
+    post:
+      tags:
+        - angebot
+      description: Liefert alle Angebote
+      operationId: listAngebote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ListAngebotQueryDto"
+      responses:
+        "500":
+          description: INTERNAL_SERVER_ERROR
+          content:
+            text/plain:
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
+  /api/angebot/cmd/create:
+    post:
+      tags:
+        - angebot
+      description: Erstellt ein Angebot
+      operationId: createAngebot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AngebotDatenDto"
+      responses:
+        "500":
+          description: INTERNAL_SERVER_ERROR
+          content:
+            text/plain:
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                description: ID der Angebot
+components:
+  schemas:
+    ListAngebotQueryDto:
+      type: object
+      properties:
+        page:
+          type: integer
+        size:
+          type: integer
+      required:
+        - page
+        - size
+    PageDtoAngebotDetailsDto:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AngebotDetailsDto'
+        totalCount:
+          type: integer
+      required:
+        - elements
+        - totalCount
+    AngebotDetailsDto:
+      type: object
+      properties:
+        buchungsNummer:
+          type: string
+        buchungsDatum:
+          type: string
+          format: date-time
+          description: Zeitpunkt der letzten Bearbeitung
+        status:
+          type: string
+          enum:
+            - COMPLETED
+            - IN_PROGRESS
+            - STARTED
+        reiseDaten:
+          $ref: "#/components/schemas/AngebotDatenDto"
+        ersteller:
+          $ref: "#/components/schemas/UserDto"
+      required:
+        - index
+        - buchungsNummer
+        - buchungsDatum
+        - reiseDaten
+        - status
+        - ersteller
+    AngebotDatenDto:
+      type: object
+      properties:
+        reiseDatum:
+          type: string
+          format: date
+          description: Zeitpunkt der letzten Bearbeitung
+        naechte:
+          type: integer
+        stadt:
+          type: string
+        kommentar:
+          type: string
+      required:
+        - reiseDatum
+        - naechte
+        - stadt
+        - kommentar
+    UserDto:
+      type: object
+      required:
+        - username
+        - label
+        - initialen
+      properties:
+        username:
+          type: string
+        label:
+          type: string
+        initialen:
+          type: string

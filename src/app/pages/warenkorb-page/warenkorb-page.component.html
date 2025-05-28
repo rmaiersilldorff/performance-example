@@ -4,12 +4,12 @@
     <mat-list>
       <ng-scrollbar autoHeightDisabled="false">
         <section class="scroll-container">
-          <ng-container *ngFor="let item of (basket$ | async)">
+          @for (item of (basket$ | async); track item) {
             <mat-list-item>
               <h4 mat-line>{{item?.header}}</h4>
               <p mat-line>{{item?.content}} </p>
             </mat-list-item>
-          </ng-container>
+          }
         </section>
       </ng-scrollbar>
     </mat-list>

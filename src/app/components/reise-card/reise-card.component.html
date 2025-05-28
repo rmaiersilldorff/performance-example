@@ -6,9 +6,11 @@
   <mat-card-content class="flex-fill">
     <div class="content">
       <ul class="flex-fill">
-        <li *ngFor="let item of reise.content">
-          {{item}}
-        </li>
+        @for (item of reise.content; track item) {
+          <li>
+            {{item}}
+          </li>
+        }
       </ul>
       <span class="pb-1">
         <em>Termine: {{reise.from | date:'dd.MM.yyyy'}}-{{reise.to | date: 'dd.MM.yyyy'}}</em>

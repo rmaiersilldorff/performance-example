@@ -1,6 +1,8 @@
 <ng-scrollbar autoHeightDisabled="false">
-  <div class="reise-container" *ngFor="let angebot of (angebote$ | async); trackBy: trackByFn">
-    <app-reise-card [reise]="angebot">
-    </app-reise-card>
-  </div>
+  @for (angebot of (angebote$ | async); track trackByFn($index, angebot)) {
+    <div class="reise-container">
+      <app-reise-card [reise]="angebot">
+      </app-reise-card>
+    </div>
+  }
 </ng-scrollbar>
