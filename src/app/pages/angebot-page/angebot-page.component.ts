@@ -3,10 +3,14 @@ import {ReiseService} from '../../services/reise.service';
 import {first} from 'rxjs/operators';
 import {Reise} from '../../models/common';
 import {BehaviorSubject} from 'rxjs';
+import {AngebotListComponent} from '../../components/angebot-list/angebot-list.component';
 
 @Component({
   selector: 'app-angebot-page',
   templateUrl: './angebot-page.component.html',
+  imports: [
+    AngebotListComponent
+  ],
   styleUrls: ['./angebot-page.component.scss']
 })
 export class AngebotPageComponent {

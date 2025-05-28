@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {BasketService} from '../../services/basket.service';
 import {MatList, MatListItem} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
+import {AsyncPipe} from '@angular/common';
 
 @Component({
     selector: 'app-warenkorb-page',
@@ -11,7 +12,8 @@ import {NgScrollbar} from 'ngx-scrollbar';
     imports: [
         MatList,
         NgScrollbar,
-        MatListItem
+        MatListItem,
+        AsyncPipe
     ],
     styleUrls: ['./warenkorb-page.component.scss']
 })

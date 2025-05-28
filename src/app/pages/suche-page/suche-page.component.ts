@@ -4,13 +4,24 @@ import {ReiseService} from '../../services/reise.service';
 import {combineLatest, interval, lastValueFrom} from 'rxjs';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {AngebotStore} from '../../+state/angebot.store';
-import {MatFormField} from '@angular/material/input';
+import {MatFormField, MatHint} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatIcon} from '@angular/material/icon';
+import {ReiseListItemComponent} from '../../components/reise-list-item/reise-list-item.component';
+import {MatList} from '@angular/material/list';
+import {NgScrollbar} from 'ngx-scrollbar';
 
 @Component({
     selector: 'app-suche-page',
     templateUrl: './suche-page.component.html',
     imports: [
-        MatFormField
+        MatFormField,
+        FormsModule,
+        MatIcon,
+        MatHint,
+        ReiseListItemComponent,
+        MatList,
+        NgScrollbar
     ],
     styleUrls: ['./suche-page.component.scss']
 })

@@ -52,8 +52,6 @@
                             }
                         ],
                         "styles": [
-                            "./node_modules/@ju30-platform/font/styles/ju30-font.css",
-                            "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
                             "src/styles.scss"
                         ],
                         "scripts": [],

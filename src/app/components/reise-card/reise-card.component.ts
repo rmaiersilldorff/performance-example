@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject } from '@angular/core';
 import {Reise} from '../../models/common';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/material/card';
+import {CurrencyPipe, DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-reise-card',
@@ -10,7 +11,9 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/m
     MatCard,
     MatCardHeader,
     MatCardContent,
-    MatCardActions
+    MatCardActions,
+    DatePipe,
+    CurrencyPipe
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
