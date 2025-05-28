@@ -1,7 +1,7 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SuchePageComponent} from './pages/suche-page/suche-page.component';
-import {MaterialModule} from './material.module';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReiseListItemComponent} from './components/reise-list-item/reise-list-item.component';
 import {SucheRoutingModule} from './suche-routing.module';
@@ -16,14 +16,13 @@ import {StoreModule} from '@ngrx/store';
     ],
     exports: [SuchePageComponent],
     imports: [
-        CommonModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        StoreModule.forFeature(angeboteFeature),
-        NgScrollbarModule,
-        SucheRoutingModule
-    ],
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature(angeboteFeature),
+    NgScrollbarModule,
+    SucheRoutingModule
+],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SucheModule {
