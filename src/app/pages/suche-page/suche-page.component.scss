@@ -16,6 +16,12 @@ mat-list {
   }
 }
 
+.suche-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .suche-icon {
   vertical-align: middle;
 }

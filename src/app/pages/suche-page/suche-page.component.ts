@@ -10,7 +10,7 @@ import {MatIcon} from '@angular/material/icon';
 import {ReiseListItemComponent} from '../../components/reise-list-item/reise-list-item.component';
 import {MatList, MatListSubheaderCssMatStyler} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
-import {MatLabel} from '@angular/material/form-field';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatLabel} from '@angular/material/form-field';
 import {MatIconButton} from '@angular/material/button';
 
 @Component({
@@ -30,7 +30,9 @@ import {MatIconButton} from '@angular/material/button';
         MatSuffix,
         MatListSubheaderCssMatStyler
     ],
-    providers: [AngebotStore],
+    providers: [AngebotStore,
+        {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    ],
     styleUrls: ['./suche-page.component.scss']
 })
 export class SuchePageComponent {

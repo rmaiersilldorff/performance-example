@@ -1,22 +1,22 @@
 <form autocomplete="off" class="form-container" (keyup.enter)="search()">
   <div class="form-content">
     <h2 mat-subheader>Reisen suchen</h2>
-    <div class="d-inline-block" >
-      <div class="pl-3 pr-3 d-inline-block">
+    <div class="suche-container" >
+      <div class="pl-3 pr-3 d-flex">
         <mat-form-field>
           <mat-label>Stadt</mat-label>
           <input matInput [ngModel]="destination()" (ngModelChange)="destination.set($event)" placeholder="Ziel" name="destination">
           <mat-hint>Urlaubsziel</mat-hint>
         </mat-form-field>
       </div>
-      <div class="pl-3 pr-3 d-inline-block">
+      <div class="pl-3 pr-3 d-flex">
         <mat-form-field>
           <mat-label>Nächte</mat-label>
           <input matInput [ngModel]="nights()" (ngModelChange)="nights.set($event)" placeholder="Anzahl" name="nights">
           <mat-hint>Anzahl der Nächte</mat-hint>
         </mat-form-field>
       </div>
-      <button mat-icon-button matSuffix (click)="search()" class="suche-icon">
+      <button mat-icon-button matSuffix (click)="search()" class="d-flex suche-icon">
         <mat-icon matSuffix>search</mat-icon>
       </button>
     </div>
