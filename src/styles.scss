@@ -1,4 +1,21 @@
 /* You can addToCart global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: light dark;
+  @include mat.theme((
+          color: mat.$violet-palette,
+          typography: Roboto,
+          density: 0
+  ));
+}
+
+:host {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border: 1px solid var(--mat-sys-outline-variant);
+  font: var(--mat-sys-body-large);
+}
 
 html, body {
   height: 100%;
@@ -47,3 +64,6 @@ mat-form-field {
 .flex-fill {
   flex: 1 1 0px !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
