@@ -1,4 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const prettierrc = require('./.prettierrc.js');
-
-module.exports = prettierrc;
+export default {
+    tabWidth: 4,
+    printWidth: 160,
+    singleQuote: true,
+    endOfLine: 'auto',
+    bracketSpacing: false,
+    htmlWhitespaceSensitivity: 'ignore',
+};

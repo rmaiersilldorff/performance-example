@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgScrollbarModule} from 'ngx-scrollbar';
 import {AppComponent} from './app/app.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {mockApiInterceptor} from './app/services/http-mock-api.interceptor';
 
 if (environment.production) {
     enableProdMode();
@@ -18,6 +20,7 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, AppRoutingModule, LayoutModule, FormsModule, ReactiveFormsModule, NgScrollbarModule),
         {provide: LocationStrategy, useClass: PathLocationStrategy},
+        provideHttpClient(withInterceptors([mockApiInterceptor])),
         provideAnimations()
     ]
 })

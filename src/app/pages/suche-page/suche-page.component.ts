@@ -1,17 +1,17 @@
 import {Component, effect, inject, signal} from '@angular/core';
-import {Reise} from '../../models/common';
-import {ReiseService} from '../../services/reise.service';
 import {combineLatest, interval, lastValueFrom} from 'rxjs';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {AngebotStore} from '../../+state/angebot.store';
 import {MatFormField, MatHint, MatInput, MatSuffix} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
-import {ReiseListItemComponent} from '../../components/reise-list-item/reise-list-item.component';
 import {MatList, MatListSubheaderCssMatStyler} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatLabel} from '@angular/material/form-field';
 import {MatIconButton} from '@angular/material/button';
+import {ReiseService} from '@reisen/services';
+import {Reise} from '@reisen/models';
+import {ReiseListItemComponent} from '@reisen/components';
 
 @Component({
     selector: 'app-suche-page',
@@ -37,8 +37,8 @@ import {MatIconButton} from '@angular/material/button';
 })
 export class SuchePageComponent {
 
-    reisen: Reise[];
-    filteredReisen = signal([]);
+    reisen: Reise[] = [];
+    filteredReisen = signal<Reise[]>([]);
     destination = signal('');
     nights = signal(1);
 

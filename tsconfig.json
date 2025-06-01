@@ -8,20 +8,39 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "ES2022",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2023",
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@angebote/*": [
+        "src/app/features/angebote/*"
+      ],
+      "@basket/*": [
+        "src/app/features/basket/*"
+      ],
+      "@reisen/*": [
+        "src/app/features/reisen/*"
+      ],
+      "@api/*": [
+        "src/app/api/index.ts"
+      ],
+    },
     "lib": [
-      "es2018",
+      "ES2023",
       "dom"
     ],
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true
   }
 }

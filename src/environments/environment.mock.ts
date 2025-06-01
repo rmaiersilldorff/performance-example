@@ -1,7 +1,7 @@
 import packageJson from '../../package.json';
 
 export const environment = {
-  production: true,
-  version: packageJson.version,
-  mock: false,
+    production: false,
+    version: packageJson.version,
+    mock: true,
 };

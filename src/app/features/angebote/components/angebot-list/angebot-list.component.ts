@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {Reise} from '../../models/common';
 import {BehaviorSubject} from 'rxjs';
 import {NgScrollbar} from 'ngx-scrollbar';
-import {ReiseCardComponent} from '../reise-card/reise-card.component';
 import {AsyncPipe} from '@angular/common';
+import {ReiseCardComponent} from '@reisen/components';
+import {Reise} from '@reisen/models';
 
 @Component({
     selector: 'app-angebot-list',

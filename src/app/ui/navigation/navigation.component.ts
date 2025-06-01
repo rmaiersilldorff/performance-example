@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
-import {BasketService} from '../../services/basket.service';
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIcon} from '@angular/material/icon';
@@ -10,6 +9,7 @@ import {AsyncPipe} from '@angular/common';
 import {MatListItem, MatNavList} from '@angular/material/list';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {MatIconButton} from '@angular/material/button';
+import {BasketService} from '@basket/services';
 
 @Component({
     selector: 'app-navigation',
@@ -41,9 +41,6 @@ export class NavigationComponent {
         );
 
     basketCount$: Observable<number>;
-
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
     constructor() {
         this.basketCount$ = this.basketService.getCount();

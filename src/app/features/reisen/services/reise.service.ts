@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
-import {Reise} from '../models/common';
+import {Observable, of} from 'rxjs';
+import {Reise} from '@reisen/models';
 import {delay, map, switchMap} from 'rxjs/operators';
-import * as faker from 'faker/locale/de';
+import {fakerDE as faker} from '@faker-js/faker';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import * as faker from 'faker/locale/de';
 export class ReiseService {
 
   counter = 0;
-  length = faker.random.number({min: 5, max: 10});
+  length = faker.number.int({min: 5, max: 10});
   reisen$: Observable<Reise[]> = of(Array.from(new Array(this.length)).map(() => this.fakeReise()));
 
   getAngebote(): Observable<Reise[]> {
@@ -49,10 +49,10 @@ export class ReiseService {
     return {
       id: this.counter++,
       header: faker.address.city(),
-      content: [`${faker.random.number({min: 1, max: 21})} Nächte`, `Flug von Wien`],
+      content: [`${faker.number.int({min: 1, max: 21})} Nächte`, `Flug von Wien`],
       from: new Date(),
       to: new Date(),
-      price: faker.random.number({min: 400, max: 1200})
+      price: faker.number.int({min: 400, max: 1200})
     };
   }
 }

@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {Basket, Reise} from '../models/common';
 import {map, scan, shareReplay, startWith} from 'rxjs/operators';
+import {Basket, Reise} from '@reisen/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
-  add$ = new Subject();
+  add$ = new Subject<Basket>();
 
   basket$ = this.add$.asObservable().pipe(
     scan((currVal: Basket, newVal: Basket) => {

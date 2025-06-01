@@ -1,9 +1,9 @@
 import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
-import {ReiseService} from '../../services/reise.service';
 import {first} from 'rxjs/operators';
-import {Reise} from '../../models/common';
 import {BehaviorSubject} from 'rxjs';
-import {AngebotListComponent} from '../../components/angebot-list/angebot-list.component';
+import {ReiseService} from '@reisen/services';
+import {AngebotListComponent} from '@angebote/components';
+import {Reise} from '@reisen/models';
 
 @Component({
   selector: 'app-angebot-page',
@@ -17,8 +17,7 @@ export class AngebotPageComponent {
   private reiseService = inject(ReiseService);
 
 
-  @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef;
-  angebotListRef;
+  @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef | undefined;
   angebote$ = new BehaviorSubject<Reise[]>([]);
   changeIndex = -1;
 

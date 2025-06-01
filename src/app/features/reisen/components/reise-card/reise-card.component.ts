@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, NgZone, inject} from '@angular/core';
-import {Reise} from '../../models/common';
+import {ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input} from '@angular/core';
+import {Reise} from '@reisen/models';
 import {
     MatCard,
     MatCardActions,
@@ -30,7 +30,7 @@ export class ReiseCardComponent {
     private element = inject(ElementRef);
     private zone = inject(NgZone);
 
-    @Input() reise: Reise;
+    readonly reise = input<Reise | undefined>(undefined);
 
     blink() {
         this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';

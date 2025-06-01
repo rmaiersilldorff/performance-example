@@ -4,8 +4,8 @@ import {pipe, switchMap, tap} from 'rxjs';
 import {inject} from '@angular/core';
 import {tapResponse} from '@ngrx/operators';
 import {Router} from '@angular/router';
-import {ReiseService} from '../services/reise.service';
-import {Reise} from '../models/common';
+import {ReiseService} from '../features/reisen/services/reise.service';
+import { Reise } from '../features/reisen/models/common';
 
 export interface AngebotState {
     angebote: Reise[];

@@ -20,7 +20,7 @@ export class ReiseListItemComponent {
   private zone = inject(NgZone);
 
 
-  readonly reise = input<Reise>(undefined);
+  readonly reise = input<Reise | undefined>(undefined);
   readonly addAction = output<void>();
 
   blink() {
