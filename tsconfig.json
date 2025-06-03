@@ -18,18 +18,18 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@angebote/*": [
-        "src/app/features/angebote/*"
-      ],
       "@basket/*": [
         "src/app/features/basket/*"
       ],
       "@reisen/*": [
         "src/app/features/reisen/*"
       ],
-      "@api/*": [
-        "src/app/api/index.ts"
+      "@shared/*": [
+        "src/app/shared/*"
       ],
+      "@core/*": [
+        "src/app/core/*"
+      ]
     },
     "lib": [
       "ES2023",

@@ -9,6 +9,7 @@ import {
     MatCardTitle
 } from '@angular/material/card';
 import {CurrencyPipe, DatePipe} from '@angular/common';
+import {AngebotDetailsDto} from '@reisen/api';
 
 @Component({
     selector: 'app-reise-card',
@@ -30,7 +31,7 @@ export class ReiseCardComponent {
     private element = inject(ElementRef);
     private zone = inject(NgZone);
 
-    readonly reise = input<Reise | undefined>(undefined);
+    readonly reise = input<AngebotDetailsDto | undefined>(undefined);
 
     blink() {
         this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';

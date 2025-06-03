@@ -2,7 +2,7 @@
   <div class="form-content">
     <h2 mat-subheader>Warenkorb</h2>
     <mat-list>
-      <ng-scrollbar autoHeightDisabled="false">
+      <ng-scrollbar>
         <section class="scroll-container">
           @for (item of (basket$ | async); track item) {
             <mat-list-item>

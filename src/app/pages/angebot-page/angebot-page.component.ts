@@ -1,9 +1,7 @@
-import { Component, ViewChild, ViewContainerRef, inject } from '@angular/core';
+import {Component, ViewChild, ViewContainerRef, inject, signal} from '@angular/core';
 import {first} from 'rxjs/operators';
-import {BehaviorSubject} from 'rxjs';
-import {ReiseService} from '@reisen/services';
-import {AngebotListComponent} from '@angebote/components';
-import {Reise} from '@reisen/models';
+import {AngebotListComponent} from '@reisen/components';
+import {AngebotDetailsDto, AngebotService} from '@reisen/api';
 
 @Component({
   selector: 'app-angebot-page',
@@ -14,32 +12,32 @@ import {Reise} from '@reisen/models';
   styleUrls: ['./angebot-page.component.scss']
 })
 export class AngebotPageComponent {
-  private reiseService = inject(ReiseService);
+  private angebotService = inject(AngebotService);
 
 
   @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef | undefined;
-  angebote$ = new BehaviorSubject<Reise[]>([]);
+  angebote = signal<AngebotDetailsDto[]>([]);
   changeIndex = -1;
 
   constructor() {
-    this.reiseService.getAngebote().pipe(first())
-      .subscribe((angebote) => {
-        this.angebote$.next(angebote);
+    this.angebotService.listAngebote().pipe(first())
+      .subscribe((angebotDetails) => {
+        this.angebote.set(angebotDetails.elements);
       });
   }
 
   changeItem() {
-    (this.changeIndex + 1) <= this.angebote$.value.length ? this.changeIndex++ : this.changeIndex = 0;
-    this.reiseService.changeAngebot(this.changeIndex).pipe(first())
+    (this.changeIndex + 1) <= this.angebote().length ? this.changeIndex++ : this.changeIndex = 0;
+    this.angebotService.changeAngebot({index: this.changeIndex}).pipe(first())
       .subscribe((angebote) => {
-        this.angebote$.next(angebote);
+        this.angebote.set(angebote.elements);
       });
   }
 
   addItem() {
-    this.reiseService.addAngebot().pipe(first())
+    this.angebotService.addAngebot().pipe(first())
       .subscribe((angebote) => {
-        this.angebote$.next(angebote);
+        this.angebote.set(angebote.elements);
       });
   }
 

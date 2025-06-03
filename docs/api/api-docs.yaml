@@ -4,7 +4,7 @@ info:
   title: OpenAPI definition
   version: v0
 servers:
-  - url: http://localhost:8992/
+  - url: http://localhost:8900/
     description: Generated server url
 paths:
   /api/angebot/cmd/list:
@@ -13,12 +13,6 @@ paths:
         - angebot
       description: Liefert alle Angebote
       operationId: listAngebote
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/ListAngebotQueryDto"
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -32,18 +26,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
-  /api/angebot/cmd/create:
+  /api/angebot/cmd/add:
     post:
       tags:
         - angebot
-      description: Erstellt ein Angebot
-      operationId: createAngebot
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AngebotDatenDto"
+      description: Fuegt ein Angebot hinzu
+      operationId: addAngebot
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -56,20 +44,71 @@ paths:
           content:
             application/json:
               schema:
+                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
+  /api/angebot/cmd/change:
+    post:
+      tags:
+        - angebot
+      description: Aendert ein Angebot
+      operationId: changeAngebot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangeAngebotQueryDto"
+      responses:
+        "500":
+          description: INTERNAL_SERVER_ERROR
+          content:
+            text/plain:
+              schema:
                 type: string
-                description: ID der Angebot
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
+  /api/angebot/cmd/search:
+    post:
+      tags:
+        - angebot
+      description: Suche nach Angeboten
+      operationId: searchAngebot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchAngebotQueryDto"
+      responses:
+        "500":
+          description: INTERNAL_SERVER_ERROR
+          content:
+            text/plain:
+              schema:
+                type: string
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
 components:
   schemas:
-    ListAngebotQueryDto:
+    ChangeAngebotQueryDto:
       type: object
       properties:
-        page:
-          type: integer
-        size:
-          type: integer
-      required:
-        - page
-        - size
+        index:
+          type: number
+    SearchAngebotQueryDto:
+      type: object
+      properties:
+        name:
+          type: string
+        nights:
+          type: number
     PageDtoAngebotDetailsDto:
       type: object
       properties:
@@ -85,57 +124,27 @@ components:
     AngebotDetailsDto:
       type: object
       properties:
-        buchungsNummer:
+        id:
+          type: number
+        header:
           type: string
-        buchungsDatum:
+        content:
+          type: array
+          items:
+            type: string
+        from:
           type: string
           format: date-time
           description: Zeitpunkt der letzten Bearbeitung
-        status:
+        to:
           type: string
-          enum:
-            - COMPLETED
-            - IN_PROGRESS
-            - STARTED
-        reiseDaten:
-          $ref: "#/components/schemas/AngebotDatenDto"
-        ersteller:
-          $ref: "#/components/schemas/UserDto"
-      required:
-        - index
-        - buchungsNummer
-        - buchungsDatum
-        - reiseDaten
-        - status
-        - ersteller
-    AngebotDatenDto:
-      type: object
-      properties:
-        reiseDatum:
-          type: string
-          format: date
+          format: date-time
           description: Zeitpunkt der letzten Bearbeitung
-        naechte:
-          type: integer
-        stadt:
-          type: string
-        kommentar:
-          type: string
+        price:
+          type: number
       required:
-        - reiseDatum
-        - naechte
-        - stadt
-        - kommentar
-    UserDto:
-      type: object
-      required:
-        - username
-        - label
-        - initialen
-      properties:
-        username:
-          type: string
-        label:
-          type: string
-        initialen:
-          type: string
+        - header
+        - content
+        - from
+        - to
+        - price

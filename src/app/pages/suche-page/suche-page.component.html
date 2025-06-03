@@ -21,9 +21,9 @@
       </button>
     </div>
     <mat-list>
-      <ng-scrollbar autoHeightDisabled="false">
+      <ng-scrollbar>
         <section class="scroll-container">
-          @for (reise of filteredReisen(); track reise) {
+          @for (reise of filteredAngebote(); track reise) {
             <app-reise-list-item
               [reise]="reise"
               (addAction)="addToCart(reise)">

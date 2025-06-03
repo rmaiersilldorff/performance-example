@@ -4,12 +4,11 @@ import {pipe, switchMap, tap} from 'rxjs';
 import {inject} from '@angular/core';
 import {tapResponse} from '@ngrx/operators';
 import {Router} from '@angular/router';
-import {ReiseService} from '../features/reisen/services/reise.service';
-import { Reise } from '../features/reisen/models/common';
+import {AngebotDetailsDto, AngebotService, PageDtoAngebotDetailsDto, SearchAngebotQueryDto} from '@reisen/api';
 
 export interface AngebotState {
-    angebote: Reise[];
-    selectedAngebot: Reise | null;
+    angebote: AngebotDetailsDto[];
+    selectedAngebot: AngebotDetailsDto | null;
     isLoading: boolean;
 }
 
@@ -21,14 +20,14 @@ export const initialState: AngebotState = {
 
 export const AngebotStore = signalStore(
     withState(initialState),
-    withMethods((store, reiseService = inject(ReiseService), router = inject(Router)) => ({
+    withMethods((store, angebotService = inject(AngebotService), router = inject(Router)) => ({
         loadAngebote: rxMethod<void>(
             pipe(
                 tap(() => patchState(store, {isLoading: true})),
                 switchMap(() => {
-                    return reiseService.getAngebote().pipe(
+                    return angebotService.listAngebote().pipe(
                         tapResponse({
-                            next: (angebote: Reise[]) => patchState(store, {angebote}),
+                            next: (result: PageDtoAngebotDetailsDto) => patchState(store, {angebote: result.elements}),
                             error: (error) => console.log(error),
                             finalize: () => patchState(store, {isLoading: false}),
                         }),
@@ -36,6 +35,9 @@ export const AngebotStore = signalStore(
                 }),
             ),
         ),
-        selectAngebot: rxMethod<Reise>(pipe(tap((reise: Reise) => patchState(store, {selectedAngebot: reise})))),
+        selectAngebot: rxMethod<AngebotDetailsDto>(
+            pipe(tap((angebot: AngebotDetailsDto) =>
+                patchState(store, {selectedAngebot: angebot})))
+        ),
     })),
 );

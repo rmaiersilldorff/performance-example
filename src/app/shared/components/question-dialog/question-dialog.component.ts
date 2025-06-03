@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Subject} from 'rxjs';
 import {MatDialogActions, MatDialogContent, MatDialogTitle} from '@angular/material/dialog';
 import {MatButton} from '@angular/material/button';
@@ -32,8 +32,8 @@ import {MatButton} from '@angular/material/button';
 })
 export class QuestionDialogComponent {
 
-  title: string;
-  message: string;
+  title = '';
+  message = '';
 
-  close = new Subject<boolean>();
+  close = new Subject<boolean | undefined>();
 }

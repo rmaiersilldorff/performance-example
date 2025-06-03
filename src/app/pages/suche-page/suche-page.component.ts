@@ -1,7 +1,5 @@
 import {Component, effect, inject, signal} from '@angular/core';
-import {combineLatest, interval, lastValueFrom} from 'rxjs';
-import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {AngebotStore} from '../../+state/angebot.store';
+import {lastValueFrom} from 'rxjs';
 import {MatFormField, MatHint, MatInput, MatSuffix} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
@@ -9,9 +7,9 @@ import {MatList, MatListSubheaderCssMatStyler} from '@angular/material/list';
 import {NgScrollbar} from 'ngx-scrollbar';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatLabel} from '@angular/material/form-field';
 import {MatIconButton} from '@angular/material/button';
-import {ReiseService} from '@reisen/services';
-import {Reise} from '@reisen/models';
 import {ReiseListItemComponent} from '@reisen/components';
+import {AngebotStore} from '@reisen/+state';
+import {AngebotDetailsDto, AngebotService} from '@reisen/api';
 
 @Component({
     selector: 'app-suche-page',
@@ -37,52 +35,29 @@ import {ReiseListItemComponent} from '@reisen/components';
 })
 export class SuchePageComponent {
 
-    reisen: Reise[] = [];
-    filteredReisen = signal<Reise[]>([]);
+    filteredAngebote = signal<AngebotDetailsDto[]>([]);
     destination = signal('');
     nights = signal(1);
 
-    readonly store = inject(AngebotStore);
-
-    reiseService = inject(ReiseService);
-
-    destination$ = toObservable(this.destination);
-    nights$ = toObservable(this.nights);
-
-    criteria$ = combineLatest([this.destination$, this.nights$, interval(1000)]);
-
-    // use rxjsinterop-api; create signal with initial value
-    criteria = toSignal(this.criteria$, {initialValue: ['test', 1, -1]});
-
-    // use rxjsinterop-api
-    critera2$ = toObservable(this.criteria);
-
-    // select Signal from store
-    angebote = this.store.loadAngebote();
+    private readonly angebotService = inject(AngebotService);
 
 
     constructor() {
         effect(() => {
-            // trigger search
             void this.search();
         });
-
-        // automatic unsubscribe for signals
-        /*effect(() => {
-            console.log('Count ', this.criteria()[2]);
-        });*/
-
-        // automatic unsubscribe for observable
-        // this.critera2$.subscribe((value) => console.log('Count', value[2]));
     }
 
 
-    addToCart(item: Reise) {
+    addToCart(item: AngebotDetailsDto) {
         throw new Error('not implemented yet');
     }
 
     async search(): Promise<void> {
-        const value = await lastValueFrom(this.reiseService.search(this.destination(), this.nights()));
-        this.filteredReisen.set(value);
+        const name = this.destination();
+        const nights = this.nights();
+
+        const result = await lastValueFrom(this.angebotService.searchAngebot({name, nights}));
+        this.filteredAngebote.set(result.elements);
     }
 }

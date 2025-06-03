@@ -10,7 +10,7 @@ import {NgScrollbarModule} from 'ngx-scrollbar';
 import {AppComponent} from './app/app.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
-import {mockApiInterceptor} from './app/services/http-mock-api.interceptor';
+import {mockApiInterceptor} from '@core/services';
 
 if (environment.production) {
     enableProdMode();

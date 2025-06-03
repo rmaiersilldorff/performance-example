@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input, output } from '@angular/core';
-import {Reise} from '../../models/common';
+import {Component, ElementRef, NgZone, inject, input, output} from '@angular/core';
 import {MatListItem} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
+import {AngebotDetailsDto} from '@reisen/api';
 
 @Component({
   selector: 'app-reise-list-item',
@@ -20,7 +20,7 @@ export class ReiseListItemComponent {
   private zone = inject(NgZone);
 
 
-  readonly reise = input<Reise | undefined>(undefined);
+  readonly reise = input<AngebotDetailsDto | undefined>(undefined);
   readonly addAction = output<void>();
 
   blink() {
