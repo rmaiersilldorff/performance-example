@@ -42,14 +42,14 @@ function generateFakeReisen() {
 
 // GET all Angebote
 app.post('/api/angebot/cmd/list', (req, res) => {
-    res.json(reisenData);
+    res.json({elements: reisenData, totalCount: reisenData.length});
 });
 
 // POST a new Angebot
 app.post('/api/angebot/cmd/add', (req, res) => {
     const newReise = createFakeReise();
     reisenData.push(newReise);
-    res.json(reisenData);
+    res.json({elements: reisenData, totalCount: reisenData.length});
 });
 
 // PUT change a specific Angebot (by ID)
@@ -62,13 +62,13 @@ app.post('/api/angebot/cmd/change', (req, res) => {
 
     // Just mimic your “changeAngebot” logic:
     reisenData[index].header = `Item ${reisenData[index].id} has changed`;
-    res.json(reisenData);
+    res.json({elements: reisenData, totalCount: reisenData.length});
 });
 
 // GET search (via query params: ?value=Vienna&nights=3)
 app.post('/api/angebot/cmd/search', (req, res) => {
-    const value = req.query.value?.toString().toLowerCase() ?? '';
-    const nights = req.query.nights?.toString() ?? '';
+    const value = req.body.name?.toString().toLowerCase() ?? '';
+    const nights = req.body.nights?.toString() ?? '';
 
     const filtered = reisenData.filter((reise) => {
         return (
@@ -77,7 +77,7 @@ app.post('/api/angebot/cmd/search', (req, res) => {
         );
     });
 
-    res.json(filtered);
+    res.json({elements: filtered, totalCount: filtered.length});
 });
 
 // Start Server
