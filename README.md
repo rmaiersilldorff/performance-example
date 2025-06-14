@@ -1,27 +1,49 @@
-# PerformanceApp
+# 🚀 Performance App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+Welcome to the **Performance App** — your tool to **search, add, update, view, and manage journeys**, all wrapped with a smooth basket feature!
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 📋 Features
 
-## Code scaffolding
+- Search, add, update, and view **journeys** — a complete CRUD experience
+- Manage journeys in a **basket** for easy multi-select & checkout
+- Fully **standalone components** with Angular Signals for reactive state
+- API client generated from OpenAPI spec with strong typings
+- Automatic code formatting and linting with Prettier and ESLint
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## ⚙️ Scripts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Use these handy commands to develop, build, test, and maintain the app:
 
-## Running unit tests
+| Script               | Description                                                      |
+|----------------------|------------------------------------------------------------------|
+| `npm start`          | Start the Angular dev server (`ng serve`)                        |
+| `npm run start:mock` | Start dev server with mock configuration on port 8901            |
+| `npm run build`      | Build the Angular app for production                             |
+| `npm test`           | Run unit tests                                                   |
+| `npm run lint`       | Run linting to check code style                                  |
+| `npm run start:node:server` | Start the backend node server with nodemon                  |
+| `npm run prepare`    | Install Git hooks with Husky                                     |
+| `npm run generate:client` | Generate API client from OpenAPI spec and format with Prettier |
+| `npm run prettier:fix` | Format all source files with Prettier                            |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🚀 Getting Started
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Prerequisites
 
-## Further help
+- Node.js (v14+ recommended)
+- Angular CLI (`npm install -g @angular/cli`)
+- `openapi-generator-cli` (for API client generation)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Installation
+
+```bash
+git clone <your-repo-url>
+cd your-angular-app
+npm install
+npm run prepare

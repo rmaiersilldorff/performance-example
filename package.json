@@ -13,9 +13,7 @@
     "start:node:server": "nodemon server/server.js",
     "prepare": "husky install",
     "generate:client": "openapi-generator-cli generate -i docs/api/api-docs.yaml -o src/app/features/reisen/api -g typescript-angular && prettier --config prettier.config.js -w src/app/features/reisen/api",
-    "prettier:fix": "prettier --config prettier.config.js -w src",
-    "build:stats": "ng build --stats-json",
-    "bundle-report": "webpack-bundle-analyzer dist/performance-app/stats.json"
+    "prettier:fix": "prettier --config prettier.config.js -w src"
   },
   "private": true,
   "dependencies": {
@@ -65,8 +63,7 @@
     "prettier": "^3.5.3",
     "ts-node": "~8.3.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.28.0",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "typescript-eslint": "^8.28.0"
   },
   "husky": {
     "hooks": {
