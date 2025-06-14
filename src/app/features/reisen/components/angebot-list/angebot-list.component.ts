@@ -6,18 +6,13 @@ import {AngebotDetailsDto} from '@reisen/api';
 @Component({
     selector: 'app-angebot-list',
     templateUrl: './angebot-list.component.html',
-    imports: [
-        NgScrollbar,
-        ReiseCardComponent
-    ],
-    styleUrls: ['./angebot-list.component.scss']
+    imports: [NgScrollbar, ReiseCardComponent],
+    styleUrls: ['./angebot-list.component.scss'],
 })
 export class AngebotListComponent {
-
     angebote = input<AngebotDetailsDto[]>([]);
 
     trackByFn(index: number, item: AngebotDetailsDto) {
         return item.id;
     }
-
 }

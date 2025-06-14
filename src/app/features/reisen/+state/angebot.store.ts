@@ -35,9 +35,6 @@ export const AngebotStore = signalStore(
                 }),
             ),
         ),
-        selectAngebot: rxMethod<AngebotDetailsDto>(
-            pipe(tap((angebot: AngebotDetailsDto) =>
-                patchState(store, {selectedAngebot: angebot})))
-        ),
+        selectAngebot: rxMethod<AngebotDetailsDto>(pipe(tap((angebot: AngebotDetailsDto) => patchState(store, {selectedAngebot: angebot})))),
     })),
 );

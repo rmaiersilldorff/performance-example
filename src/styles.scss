@@ -1,69 +1,108 @@
 /* You can addToCart global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+    @include mat.sidenav-overrides(
+        (
+            container-background-color: #3f51b5,
+            container-text-color: white,
+        )
+    );
+
+    @include mat.toolbar-overrides(
+        (
+            container-background-color: #3f51b5,
+            container-text-color: white,
+        )
+    );
+
+    @include mat.icon-overrides(
+        (
+            color: white,
+        )
+    );
+
+    @include mat.list-overrides(
+        (
+            list-item-label-text-color: #e0e0e0,
+            list-item-hover-label-text-color: #e0e0e0,
+        )
+    );
+}
+
 html {
-  color-scheme: light dark;
-  @include mat.theme((
-          color: mat.$violet-palette,
-          typography: Roboto,
-          density: 0
-  ));
+    color-scheme: light dark;
+    @include mat.theme(
+        (
+            color: mat.$blue-palette,
+            typography: Roboto,
+            density: 0,
+        )
+    );
 }
 
 :host {
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  border: 1px solid var(--mat-sys-outline-variant);
-  font: var(--mat-sys-body-large);
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    border: 1px solid var(--mat-sys-outline-variant);
+    font: var(--mat-sys-body-large);
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 mat-form-field {
-  width: 100%;
+    width: 100%;
 }
 
 .form-container {
-  padding: 1rem;
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-
-  .form-content {
+    padding: 1rem;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
-    background-color: white;
-    width: 100%;
+    min-height: 100%;
 
-    border-radius: 10px;
-    box-shadow: 0 0 1.25rem 0.3125rem unquote('#00000026');
-  }
+    .form-content {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background-color: white;
+        width: 100%;
+
+        border-radius: 10px;
+        box-shadow: 0 0 1.25rem 0.3125rem unquote('#00000026');
+    }
 }
 
 .flex-column {
-  display: flex !important;
-  flex-direction: column !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .flex-none {
-  flex: none !important; // same as 0 0 auto
+    flex: none !important; // same as 0 0 auto
 }
 
 .flex-auto {
-  flex: auto !important; // same as 1 1 auto
+    flex: auto !important; // same as 1 1 auto
 }
 
 .flex-fill {
-  flex: 1 1 0px !important;
+    flex: 1 1 0px !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

@@ -10,15 +10,8 @@ import {BasketService} from '@basket/services/basket.service';
 @Component({
     selector: 'app-warenkorb-page',
     templateUrl: './warenkorb-page.component.html',
-    imports: [
-        MatList,
-        NgScrollbar,
-        MatListItem,
-        AsyncPipe,
-        MatListSubheaderCssMatStyler,
-        MatLine
-    ],
-    styleUrls: ['./warenkorb-page.component.scss']
+    imports: [MatList, NgScrollbar, MatListItem, AsyncPipe, MatListSubheaderCssMatStyler, MatLine],
+    styleUrls: ['./warenkorb-page.component.scss'],
 })
 export class WarenkorbPageComponent {
     private basketService = inject(BasketService);

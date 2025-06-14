@@ -26,28 +26,23 @@ import {AngebotDetailsDto, AngebotService} from '@reisen/api';
         MatInput,
         MatIconButton,
         MatSuffix,
-        MatListSubheaderCssMatStyler
+        MatListSubheaderCssMatStyler,
     ],
-    providers: [AngebotStore,
-        {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
-    ],
-    styleUrls: ['./suche-page.component.scss']
+    providers: [AngebotStore, {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
+    styleUrls: ['./suche-page.component.scss'],
 })
 export class SuchePageComponent {
-
     filteredAngebote = signal<AngebotDetailsDto[]>([]);
     destination = signal('');
     nights = signal(1);
 
     private readonly angebotService = inject(AngebotService);
 
-
     constructor() {
         effect(() => {
             void this.search();
         });
     }
-
 
     addToCart(item: AngebotDetailsDto) {
         throw new Error('not implemented yet');

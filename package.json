@@ -14,7 +14,7 @@
     "start:node:server": "nodemon server/server.js",
     "prepare": "husky install",
     "generate:client": "openapi-generator-cli generate -i docs/api/api-docs.yaml -o src/app/features/reisen/api -g typescript-angular && prettier --config prettier.config.js -w src/app/features/reisen/api",
-    "prettier:fix": "prettier -w src",
+    "prettier:fix": "prettier --config prettier.config.js -w src",
     "build:stats": "ng build --stats-json",
     "bundle-report": "webpack-bundle-analyzer dist/performance-app/stats.json"
   },

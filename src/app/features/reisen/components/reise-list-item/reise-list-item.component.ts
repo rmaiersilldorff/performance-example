@@ -1,36 +1,30 @@
 import {Component, ElementRef, NgZone, inject, input, output} from '@angular/core';
-import {MatListItem} from '@angular/material/list';
+import {MatListItem, MatListItemLine, MatListItemMeta, MatListItemTitle} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {AngebotDetailsDto} from '@reisen/api';
 
 @Component({
-  selector: 'app-reise-list-item',
-  templateUrl: './reise-list-item.component.html',
-  styleUrls: ['./reise-list-item.component.scss'],
-  imports: [
-    MatListItem,
-    MatIcon,
-    MatIconButton
-  ],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-reise-list-item',
+    templateUrl: './reise-list-item.component.html',
+    styleUrls: ['./reise-list-item.component.scss'],
+    imports: [MatListItem, MatIcon, MatIconButton, MatListItemTitle, MatListItemLine, MatListItemMeta],
+    // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReiseListItemComponent {
-  private element = inject(ElementRef);
-  private zone = inject(NgZone);
+    private element = inject(ElementRef);
+    private zone = inject(NgZone);
 
+    readonly reise = input<AngebotDetailsDto | undefined>(undefined);
+    readonly addAction = output<void>();
 
-  readonly reise = input<AngebotDetailsDto | undefined>(undefined);
-  readonly addAction = output<void>();
+    blink() {
+        this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
 
-  blink() {
-    this.element.nativeElement.firstChild.style.backgroundColor = 'crimson';
-
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.element.nativeElement.firstChild.style.backgroundColor = 'white';
-      }, 1000);
-    });
-  }
-
+        this.zone.runOutsideAngular(() => {
+            setTimeout(() => {
+                this.element.nativeElement.firstChild.style.backgroundColor = 'white';
+            }, 1000);
+        });
+    }
 }

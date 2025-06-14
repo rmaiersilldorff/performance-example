@@ -1,18 +1,18 @@
 <form autocomplete="off" class="form-container">
-  <div class="form-content">
-    <h2 mat-subheader>Warenkorb</h2>
-    <mat-list>
-      <ng-scrollbar>
-        <section class="scroll-container">
-          @for (item of (basket$ | async); track item) {
-            <mat-list-item>
-              <h4 mat-line>{{item?.header}}</h4>
-              <p mat-line>{{item?.content}} </p>
-            </mat-list-item>
-          }
-        </section>
-      </ng-scrollbar>
-    </mat-list>
-    <!--my-counter></my-counter-->
-  </div>
+    <div class="form-content">
+        <h2 mat-subheader>Warenkorb</h2>
+        <mat-list>
+            <ng-scrollbar>
+                <section class="scroll-container">
+                    @for (item of basket$ | async; track item) {
+                        <mat-list-item>
+                            <h4 mat-line>{{ item?.header }}</h4>
+                            <p mat-line>{{ item?.content }}</p>
+                        </mat-list-item>
+                    }
+                </section>
+            </ng-scrollbar>
+        </mat-list>
+        <!--my-counter></my-counter-->
+    </div>
 </form>

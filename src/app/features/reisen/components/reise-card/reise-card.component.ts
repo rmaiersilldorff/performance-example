@@ -1,13 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input} from '@angular/core';
 import {Reise} from '@reisen/models';
-import {
-    MatCard,
-    MatCardActions,
-    MatCardContent,
-    MatCardHeader,
-    MatCardSubtitle,
-    MatCardTitle
-} from '@angular/material/card';
+import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {CurrencyPipe, DatePipe} from '@angular/common';
 import {AngebotDetailsDto} from '@reisen/api';
 
@@ -15,17 +8,8 @@ import {AngebotDetailsDto} from '@reisen/api';
     selector: 'app-reise-card',
     templateUrl: './reise-card.component.html',
     styleUrls: ['./reise-card.component.scss'],
-    imports: [
-        MatCard,
-        MatCardHeader,
-        MatCardContent,
-        MatCardActions,
-        MatCardSubtitle,
-        MatCardTitle,
-        DatePipe,
-        CurrencyPipe
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    imports: [MatCard, MatCardHeader, MatCardContent, MatCardActions, MatCardSubtitle, MatCardTitle, DatePipe, CurrencyPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReiseCardComponent {
     private element = inject(ElementRef);
@@ -42,5 +26,4 @@ export class ReiseCardComponent {
             }, 1000);
         });
     }
-
 }
