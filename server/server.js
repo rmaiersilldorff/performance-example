@@ -1,10 +1,24 @@
 import express from 'express';
 import process from 'process';
 import {fakerDE as faker} from '@faker-js/faker';
+import cors from 'cors';
 
 // Create the Express app
 const app = express();
 const port = process.env.PORT ?? 8900;
+
+
+// Allow requests only from Angular dev server origin (or use '*')
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Alternatively, allow all origins during dev for simplicity:
+// app.use(cors());
+
+app.options('*', cors()); // enable preflight for all routes
 
 // Middleware to parse JSON in request body
 app.use(express.json());
