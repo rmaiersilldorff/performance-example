@@ -1,0 +1,9 @@
+<mat-list-item>
+    <span matListItemTitle>{{ trip()?.header }}</span>
+    <span matListItemLine>{{ trip()?.content }}</span>
+    <button type="button" mat-icon-button (click)="addAction.emit()" matListItemMeta class="shopping-cart-button">
+        <mat-icon aria-label="Side nav toggle icon">add_shopping_cart</mat-icon>
+    </button>
+    <!--{{blink()}}-->
+    <ng-content></ng-content>
+</mat-list-item>

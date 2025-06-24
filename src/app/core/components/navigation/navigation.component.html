@@ -13,8 +13,8 @@
             </button>
         </mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item routerLink="/angebote" [style.color]="'white'">Angebote</a>
-            <a mat-list-item routerLink="/suche">Suche</a>
+            <a mat-list-item routerLink="/offers" [style.color]="'white'">Travel Offers</a>
+            <a mat-list-item routerLink="/search">Search</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -22,15 +22,15 @@
             <header class="flex-none">
                 <mat-toolbar color="primary">
                     @if (!drawer.opened) {
-                        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="!drawer.opened">
+                        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
                             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
                         </button>
                     }
-                    <span>Reisebüro</span>
+                    <span>Travel agency</span>
                     <div class="basket">
                         <button type="button"
                                 mat-icon-button
-                                routerLink="/warenkorb"
+                                routerLink="/basket"
                                 [matBadge]="basketCount()">
                             <mat-icon>shopping_cart</mat-icon>
                         </button>

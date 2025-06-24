@@ -1,7 +1,5 @@
 import {Injectable, computed, signal, Signal} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {map, scan, shareReplay, startWith} from 'rxjs/operators';
-import {Basket, Reise} from '@reisen/models';
+import {Basket, Trip} from '@trip/models';
 
 @Injectable({
     providedIn: 'root',
@@ -11,12 +9,12 @@ export class BasketService {
 
   constructor() {}
 
-  add(item: Reise): void {
+  add(item: Trip): void {
     const current = this.basketSignal();
     this.basketSignal.set({ items: [...current.items, item] });
   }
 
-  selectAll(): Signal<Reise[]> {
+  selectAll(): Signal<Trip[]> {
     return computed(() => this.basketSignal().items);
   }
 

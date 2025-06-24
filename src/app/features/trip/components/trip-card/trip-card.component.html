@@ -1,0 +1,26 @@
+<mat-card class="reise-card mr-3">
+    <mat-card-header class="flex-none">
+        <mat-card-title>{{ trip()?.header }}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="flex-fill">
+        <div class="content">
+            <ul class="flex-fill">
+                @for (item of trip()?.content; track item) {
+                    <li>
+                        {{ item }}
+                    </li>
+                }
+            </ul>
+            <span class="pb-1">
+                <em>Termine: {{ trip()?.from | date: 'dd.MM.yyyy' }}-{{ trip()?.to | date: 'dd.MM.yyyy' }}</em>
+            </span>
+            <span class="price flex-none">{{ trip()?.price | currency }}</span>
+            {{ blink() }}
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="flex-none">
+        <button mat-button>Buchen</button>
+        <button mat-button>Details</button>
+    </mat-card-actions>
+</mat-card>

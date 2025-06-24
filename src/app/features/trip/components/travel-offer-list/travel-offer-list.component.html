@@ -1,0 +1,7 @@
+<ng-scrollbar>
+    @for (trip of trips(); track trackByFn($index, trip)) {
+        <div class="reise-container">
+            <app-trip-card [trip]="trip"></app-trip-card>
+        </div>
+    }
+</ng-scrollbar>

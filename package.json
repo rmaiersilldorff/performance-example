@@ -12,7 +12,7 @@
     "e2e": "ng e2e",
     "start:node:server": "nodemon server/server.js",
     "prepare": "husky install",
-    "generate:client": "openapi-generator-cli generate -i docs/api/api-docs.yaml -o src/app/features/reisen/api -g typescript-angular && prettier --config prettier.config.js -w src/app/features/reisen/api",
+    "generate:client": "openapi-generator-cli generate -i docs/api/api-docs.yaml -o src/app/features/trip/api -g typescript-angular && prettier --config prettier.config.js -w src/app/features/trip/api",
     "prettier:fix": "prettier --config prettier.config.js -w src"
   },
   "private": true,

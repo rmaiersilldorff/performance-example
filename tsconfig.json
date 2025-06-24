@@ -20,8 +20,8 @@
       "@basket/*": [
         "src/app/features/basket/*"
       ],
-      "@reisen/*": [
-        "src/app/features/reisen/*"
+      "@trip/*": [
+        "src/app/features/trip/*"
       ],
       "@shared/*": [
         "src/app/shared/*"

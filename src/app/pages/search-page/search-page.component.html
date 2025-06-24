@@ -1,0 +1,33 @@
+<form autocomplete="off" class="form-container" (keyup.enter)="search()">
+    <div class="form-content">
+        <h2 mat-subheader>Search trips</h2>
+        <div class="search-container">
+            <div class="pl-3 pr-3 d-flex">
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput [ngModel]="destination()" (ngModelChange)="destination.set($event)" placeholder="Ziel" name="destination" />
+                    <mat-hint>Destination</mat-hint>^
+                </mat-form-field>
+            </div>
+            <div class="pl-3 pr-3 d-flex">
+                <mat-form-field>
+                    <mat-label>Nights</mat-label>
+                    <input matInput [ngModel]="nights()" (ngModelChange)="nights.set($event)" placeholder="Anzahl" name="nights" />
+                    <mat-hint>Number of nights</mat-hint>
+                </mat-form-field>
+            </div>
+            <button mat-icon-button matSuffix (click)="search()" class="d-flex search-icon">
+                <mat-icon matSuffix>search</mat-icon>
+            </button>
+        </div>
+        <mat-list>
+            <ng-scrollbar>
+                <section class="scroll-container">
+                    @for (offer of filteredOffers(); track offer) {
+                        <app-trip-list-item [trip]="offer" (addAction)="addToCart(offer)"></app-trip-list-item>
+                    }
+                </section>
+            </ng-scrollbar>
+        </mat-list>
+    </div>
+</form>

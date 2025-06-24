@@ -7,12 +7,12 @@ servers:
   - url: http://localhost:8900/
     description: Generated server url
 paths:
-  /api/angebot/cmd/list:
+  /api/offer/cmd/list:
     post:
       tags:
-        - angebot
-      description: Liefert alle Angebote
-      operationId: listAngebote
+        - offer
+      description: lists all travel offers
+      operationId: listTravelOffers
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -25,13 +25,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
-  /api/angebot/cmd/add:
+                $ref: '#/components/schemas/PageDtoTravelOffersDetailsDto'
+  /api/offer/cmd/add:
     post:
       tags:
-        - angebot
-      description: Fuegt ein Angebot hinzu
-      operationId: addAngebot
+        - offer
+      description: adds a travel offer
+      operationId: addTravelOffer
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -44,19 +44,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
-  /api/angebot/cmd/change:
+                $ref: '#/components/schemas/PageDtoTravelOffersDetailsDto'
+  /api/offer/cmd/change:
     post:
       tags:
-        - angebot
-      description: Aendert ein Angebot
-      operationId: changeAngebot
+        - offer
+      description: changes a travel offer
+      operationId: changeTravelOffer
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ChangeAngebotQueryDto"
+              $ref: "#/components/schemas/ChangeTravelOfferQueryDto"
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -69,19 +69,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
-  /api/angebot/cmd/search:
+                $ref: '#/components/schemas/PageDtoTravelOffersDetailsDto'
+  /api/offer/cmd/search:
     post:
       tags:
-        - angebot
-      description: Suche nach Angeboten
-      operationId: searchAngebot
+        - offer
+      description: searches travel offers
+      operationId: searchTravelOffers
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SearchAngebotQueryDto"
+              $ref: "#/components/schemas/SearchTravelOffersQueryDto"
       responses:
         "500":
           description: INTERNAL_SERVER_ERROR
@@ -94,34 +94,34 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PageDtoAngebotDetailsDto'
+                $ref: '#/components/schemas/PageDtoTravelOffersDetailsDto'
 components:
   schemas:
-    ChangeAngebotQueryDto:
+    ChangeTravelOfferQueryDto:
       type: object
       properties:
         index:
           type: number
-    SearchAngebotQueryDto:
+    SearchTravelOffersQueryDto:
       type: object
       properties:
         name:
           type: string
         nights:
           type: number
-    PageDtoAngebotDetailsDto:
+    PageDtoTravelOffersDetailsDto:
       type: object
       properties:
         elements:
           type: array
           items:
-            $ref: '#/components/schemas/AngebotDetailsDto'
+            $ref: '#/components/schemas/TravelOfferDetailsDto'
         totalCount:
           type: integer
       required:
         - elements
         - totalCount
-    AngebotDetailsDto:
+    TravelOfferDetailsDto:
       type: object
       properties:
         id:

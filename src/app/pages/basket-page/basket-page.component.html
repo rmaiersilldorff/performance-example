@@ -1,0 +1,18 @@
+<form autocomplete="off" class="form-container">
+    <div class="form-content">
+        <h2 mat-subheader>Basket</h2>
+        <mat-list>
+            <ng-scrollbar>
+                <section class="scroll-container">
+                    @for (item of basket(); track item) {
+                        <mat-list-item>
+                            <span matListItemTitle>{{ item?.header }}</span>
+                            <span matListItemLine>{{ item?.content }}</span>
+                        </mat-list-item>
+                    }
+                </section>
+            </ng-scrollbar>
+        </mat-list>
+        <!--my-counter></my-counter-->
+    </div>
+</form>

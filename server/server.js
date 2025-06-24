@@ -25,10 +25,10 @@ app.use(express.json());
 
 // In-memory data store
 let counter = 0;
-let reisenData = generateFakeReisen(); // Initialize some fake data
+let tripData = generateFakeTrip(); // Initialize some fake data
 
-// Utility function to create one fake Reise
-function createFakeReise() {
+// Utility function to create one fake Trip
+function createFakeTrip() {
     return {
         id: counter++,
         header: faker.location.city(),
@@ -42,52 +42,52 @@ function createFakeReise() {
     };
 }
 
-// Create N Reisen
-function generateFakeReisen() {
+// Create N Trips
+function generateFakeTrip() {
     const length = faker.number.int({min: 5, max: 10});
     const items = [];
     for (let i = 0; i < length; i++) {
-        items.push(createFakeReise());
+        items.push(createFakeTrip());
     }
     return items;
 }
 
 // -------------- ROUTES --------------
 
-// GET all Angebote
-app.post('/api/angebot/cmd/list', (req, res) => {
-    res.json({elements: reisenData, totalCount: reisenData.length});
+// GET all travelOffer
+app.post('/api/offer/cmd/list', (req, res) => {
+    res.json({elements: tripData, totalCount: tripData.length});
 });
 
 // POST a new Angebot
-app.post('/api/angebot/cmd/add', (req, res) => {
-    const newReise = createFakeReise();
-    reisenData.push(newReise);
-    res.json({elements: reisenData, totalCount: reisenData.length});
+app.post('/api/offer/cmd/add', (req, res) => {
+    const newTrip = createFakeTrip();
+    tripData.push(newTrip);
+    res.json({elements: tripData, totalCount: tripData.length});
 });
 
 // PUT change a specific Angebot (by ID)
-app.post('/api/angebot/cmd/change', (req, res) => {
+app.post('/api/offer/cmd/change', (req, res) => {
     const id = parseInt(req.params.id, 10);
-    const index = reisenData.findIndex((r) => r.id === id);
+    const index = tripData.findIndex((r) => r.id === id);
     if (index < 0) {
-        return res.status(404).json({error: 'Reise not found'});
+        return res.status(404).json({error: 'Trip not found'});
     }
 
     // Just mimic your “changeAngebot” logic:
-    reisenData[index].header = `Item ${reisenData[index].id} has changed`;
-    res.json({elements: reisenData, totalCount: reisenData.length});
+    tripData[index].header = `Item ${tripData[index].id} has changed`;
+    res.json({elements: tripData, totalCount: tripData.length});
 });
 
 // GET search (via query params: ?value=Vienna&nights=3)
-app.post('/api/angebot/cmd/search', (req, res) => {
+app.post('/api/offer/cmd/search', (req, res) => {
     const value = req.body.name?.toString().toLowerCase() ?? '';
     const nights = req.body.nights?.toString() ?? '';
 
-    const filtered = reisenData.filter((reise) => {
+    const filtered = tripData.filter((trip) => {
         return (
-            reise.header.toLowerCase().includes(value) &&
-            reise.content[0].includes(nights)
+            trip.header.toLowerCase().includes(value) &&
+            trip.content[0].includes(nights)
         );
     });
 
