@@ -2,7 +2,7 @@ import {Component, ElementRef, NgZone, inject, input, output} from '@angular/cor
 import {MatListItem, MatListItemLine, MatListItemMeta, MatListItemTitle} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
-import {AngebotDetailsDto} from '@reisen/api';
+import {Reise} from '@reisen/models';
 
 @Component({
     selector: 'app-reise-list-item',
@@ -15,7 +15,7 @@ export class ReiseListItemComponent {
     private element = inject(ElementRef);
     private zone = inject(NgZone);
 
-    readonly reise = input<AngebotDetailsDto | undefined>(undefined);
+    readonly reise = input<Reise | undefined>(undefined);
     readonly addAction = output<void>();
 
     blink() {

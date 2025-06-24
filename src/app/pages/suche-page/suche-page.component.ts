@@ -9,7 +9,9 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatLabel} from '@angular/material/form-f
 import {MatIconButton} from '@angular/material/button';
 import {ReiseListItemComponent} from '@reisen/components';
 import {AngebotStore} from '@reisen/+state';
-import {AngebotDetailsDto, AngebotService} from '@reisen/api';
+import {AngebotService} from '@reisen/api';
+import {BasketService} from '@basket/services'
+import {mapToReiseList, Reise} from '@reisen/models';
 
 @Component({
     selector: 'app-suche-page',
@@ -32,11 +34,12 @@ import {AngebotDetailsDto, AngebotService} from '@reisen/api';
     styleUrls: ['./suche-page.component.scss'],
 })
 export class SuchePageComponent {
-    filteredAngebote = signal<AngebotDetailsDto[]>([]);
+    filteredAngebote = signal<Reise[]>([]);
     destination = signal('');
     nights = signal(1);
 
     private readonly angebotService = inject(AngebotService);
+    basketService = inject(BasketService);
 
     constructor() {
         effect(() => {
@@ -44,8 +47,8 @@ export class SuchePageComponent {
         });
     }
 
-    addToCart(item: AngebotDetailsDto) {
-        throw new Error('not implemented yet');
+    addToCart(item: Reise) {
+        this.basketService.add(item);
     }
 
     async search(): Promise<void> {
@@ -53,6 +56,6 @@ export class SuchePageComponent {
         const nights = this.nights();
 
         const result = await lastValueFrom(this.angebotService.searchAngebot({name, nights}));
-        this.filteredAngebote.set(result.elements);
+        this.filteredAngebote.set(mapToReiseList(result.elements));
     }
 }

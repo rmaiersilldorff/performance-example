@@ -4,11 +4,12 @@ import {pipe, switchMap, tap} from 'rxjs';
 import {inject} from '@angular/core';
 import {tapResponse} from '@ngrx/operators';
 import {Router} from '@angular/router';
-import {AngebotDetailsDto, AngebotService, PageDtoAngebotDetailsDto, SearchAngebotQueryDto} from '@reisen/api';
+import {AngebotService, PageDtoAngebotDetailsDto} from '@reisen/api';
+import {mapToReiseList, Reise} from '@reisen/models';
 
 export interface AngebotState {
-    angebote: AngebotDetailsDto[];
-    selectedAngebot: AngebotDetailsDto | null;
+    angebote: Reise[];
+    selectedAngebot: Reise | null;
     isLoading: boolean;
 }
 
@@ -27,7 +28,7 @@ export const AngebotStore = signalStore(
                 switchMap(() => {
                     return angebotService.listAngebote().pipe(
                         tapResponse({
-                            next: (result: PageDtoAngebotDetailsDto) => patchState(store, {angebote: result.elements}),
+                            next: (result: PageDtoAngebotDetailsDto) => patchState(store, {angebote: mapToReiseList(result.elements)}),
                             error: (error) => console.log(error),
                             finalize: () => patchState(store, {isLoading: false}),
                         }),
@@ -35,6 +36,6 @@ export const AngebotStore = signalStore(
                 }),
             ),
         ),
-        selectAngebot: rxMethod<AngebotDetailsDto>(pipe(tap((angebot: AngebotDetailsDto) => patchState(store, {selectedAngebot: angebot})))),
+        selectAngebot: rxMethod<Reise>(pipe(tap((angebot: Reise) => patchState(store, {selectedAngebot: angebot})))),
     })),
 );

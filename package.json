@@ -32,13 +32,12 @@
     "@ngrx/signals": "^19.2.0",
     "bootstrap-4-grid": "^3.4.0",
     "http-server": "^14.1.1",
-    "nodemon": "^3.1.9",
     "ngx-scrollbar": "^18.0.0",
+    "nodemon": "^3.1.9",
     "perfect-scrollbar": "1.5.5",
     "resize-observer-polyfill": "1.5.1",
     "rxjs": "~7.5.4",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.15.1"
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~20.0.2",

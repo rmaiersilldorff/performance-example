@@ -3,9 +3,9 @@
         #drawer
         class="sidenav"
         fixedInViewport
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false"
+        [attr.role]="isHandset() ? 'dialog' : 'navigation'"
+        [mode]="isHandset() ? 'over' : 'side'"
+        [opened]="isHandset() === false"
     >
         <mat-toolbar>
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
@@ -28,12 +28,12 @@
                     }
                     <span>Reisebüro</span>
                     <div class="basket">
-                        <button type="button" mat-icon-button routerLink="/warenkorb">
+                        <button type="button"
+                                mat-icon-button
+                                routerLink="/warenkorb"
+                                [matBadge]="basketCount()">
                             <mat-icon>shopping_cart</mat-icon>
                         </button>
-                        @if (basketCount$ | async; as basketCount) {
-                            <span>{{ basketCount }}</span>
-                        }
                     </div>
                 </mat-toolbar>
             </header>

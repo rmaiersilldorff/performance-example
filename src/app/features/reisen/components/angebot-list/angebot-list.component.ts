@@ -1,7 +1,7 @@
 import {Component, input} from '@angular/core';
 import {NgScrollbar} from 'ngx-scrollbar';
 import {ReiseCardComponent} from '@reisen/components';
-import {AngebotDetailsDto} from '@reisen/api';
+import {Reise} from '@reisen/models';
 
 @Component({
     selector: 'app-angebot-list',
@@ -10,9 +10,9 @@ import {AngebotDetailsDto} from '@reisen/api';
     styleUrls: ['./angebot-list.component.scss'],
 })
 export class AngebotListComponent {
-    angebote = input<AngebotDetailsDto[]>([]);
+    angebote = input<Reise[]>([]);
 
-    trackByFn(index: number, item: AngebotDetailsDto) {
+    trackByFn(index: number, item: Reise) {
         return item.id;
     }
 }

@@ -1,8 +1,9 @@
 import {Component, ViewChild, ViewContainerRef, inject, signal} from '@angular/core';
 import {first} from 'rxjs/operators';
 import {AngebotListComponent} from '@reisen/components';
-import {AngebotDetailsDto, AngebotService} from '@reisen/api';
+import {AngebotService} from '@reisen/api';
 import {MatButtonModule} from '@angular/material/button';
+import {mapToReiseList, Reise} from '@reisen/models';
 
 @Component({
     selector: 'app-angebot-page',
@@ -14,7 +15,7 @@ export class AngebotPageComponent {
     private angebotService = inject(AngebotService);
 
     @ViewChild('vcr', {read: ViewContainerRef}) vcr: ViewContainerRef | undefined;
-    angebote = signal<AngebotDetailsDto[]>([]);
+    angebote = signal<Reise[]>([]);
     changeIndex = -1;
 
     constructor() {
@@ -22,7 +23,7 @@ export class AngebotPageComponent {
             .listAngebote()
             .pipe(first())
             .subscribe((angebotDetails) => {
-                this.angebote.set(angebotDetails.elements);
+                this.angebote.set(mapToReiseList(angebotDetails.elements));
             });
     }
 
@@ -32,7 +33,7 @@ export class AngebotPageComponent {
             .changeAngebot({index: this.changeIndex})
             .pipe(first())
             .subscribe((angebote) => {
-                this.angebote.set(angebote.elements);
+                this.angebote.set(mapToReiseList(angebote.elements));
             });
     }
 
@@ -41,7 +42,7 @@ export class AngebotPageComponent {
             .addAngebot()
             .pipe(first())
             .subscribe((angebote) => {
-                this.angebote.set(angebote.elements);
+                this.angebote.set(mapToReiseList(angebote.elements));
             });
     }
 }

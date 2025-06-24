@@ -29,6 +29,13 @@
             list-item-hover-label-text-color: #e0e0e0,
         )
     );
+
+    @include mat.badge-overrides(
+        (
+            background-color: orange,
+            disabled-state-background-color: red,
+        )
+    );
 }
 
 html {
