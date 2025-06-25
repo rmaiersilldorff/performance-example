@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, inject, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, NgZone, inject, input, output} from '@angular/core';
 import {MatListItem, MatListItemLine, MatListItemMeta, MatListItemTitle} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
@@ -9,7 +9,7 @@ import {Trip} from '@trip/models';
     templateUrl: './trip-list-item.component.html',
     styleUrls: ['./trip-list-item.component.scss'],
     imports: [MatListItem, MatIcon, MatIconButton, MatListItemTitle, MatListItemLine, MatListItemMeta],
-    // changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TripListItemComponent {
     private element = inject(ElementRef);
