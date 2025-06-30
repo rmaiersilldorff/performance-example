@@ -30,7 +30,9 @@
     "@faker-js/faker": "^9.8.0",
     "@ngrx/operators": "^19.2.0",
     "@ngrx/signals": "^19.2.0",
+    "audit": "^0.0.6",
     "bootstrap-4-grid": "^3.4.0",
+    "fix": "^0.0.6",
     "http-server": "^14.1.1",
     "ngx-scrollbar": "^18.0.0",
     "nodemon": "^3.1.9",
@@ -63,6 +65,11 @@
     "ts-node": "~8.3.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.28.0"
+  },
+  "overrides": {
+    "@ngrx/signals": {
+      "@angular/core": "~20.0.3"
+    }
   },
   "husky": {
     "hooks": {
